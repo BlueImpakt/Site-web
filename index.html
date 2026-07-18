@@ -100,7 +100,7 @@
       font-weight: 300;
     }
 
-    section { padding: 100px 0; }
+    section { padding: 100px 0; position: relative; }
 
     /* ─────────────────────────────────────────
        BUTTONS
@@ -2249,7 +2249,7 @@ Cal("ui",{"hideEventTypeDetails":false,"layout":"month_view"});
     grid.style.width = gridW + 'px';
     grid.style.height = gridH + 'px';
     grid.style.marginLeft = Math.min(0, Math.round((cw - gridW) / 2)) + 'px';
-    grid.style.background = from;
+    grid.style.background = 'transparent';
     wrap.style.height = gridH + 'px';
   }
 
@@ -2277,8 +2277,8 @@ Cal("ui",{"hideEventTypeDetails":false,"layout":"month_view"});
         el.className = 'pixel';
         el.dataset.base = t === 1 ? to : t === 2 ? from : (t === 3 ? accent : from);
         if (t) active.push(el);
-        el.style.backgroundColor = from;
-        el.__c = from;
+        el.style.backgroundColor = '';
+        el.__c = '';
         allPixels.push(el);
         grid.appendChild(el);
       }
@@ -2297,7 +2297,7 @@ Cal("ui",{"hideEventTypeDetails":false,"layout":"month_view"});
       var blackSet = new Set(blackOrder.slice(0, state.blackCount));
       for (var i = 0; i < allPixels.length; i++) {
         var pixel = allPixels[i];
-        var color = revealSet.has(pixel) ? (blackSet.has(pixel) ? to : pixel.dataset.base) : from;
+        var color = revealSet.has(pixel) ? (blackSet.has(pixel) ? to : pixel.dataset.base) : '';
         if (pixel.__c !== color) { pixel.style.backgroundColor = color; pixel.__c = color; }
       }
     }
