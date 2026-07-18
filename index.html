@@ -85,22 +85,33 @@
       text-transform: uppercase;
       letter-spacing: .12em;
       color: var(--blue-l);
-      margin-bottom: 14px;
+      margin-bottom: clamp(8px, 1.2vh, 14px);
     }
 
     .sec-title {
-      font-size: clamp(30px, 4.5vw, 50px);
-      margin-bottom: 18px;
+      font-size: clamp(26px, min(4vw, 6vh), 46px);
+      margin-bottom: clamp(10px, 1.5vh, 18px);
     }
 
     .sec-sub {
-      font-size: 17px;
+      font-size: clamp(14px, 1.6vw, 17px);
       color: var(--text-m);
       max-width: 540px;
       font-weight: 300;
     }
 
-    section { padding: 56px 0; position: relative; }
+    section { padding: clamp(28px, 4vh, 56px) 0; position: relative; }
+
+    /* Sections plein-écran — chaque section = 1 viewport sur desktop */
+    .problem, .offers, .tools-sec, .pricing-sec, .about-sec, .cta-sec {
+      height: 100vh;
+      height: 100dvh;
+      min-height: 480px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
 
     /* ─────────────────────────────────────────
        BUTTONS
@@ -332,7 +343,7 @@
        PROBLEM
     ───────────────────────────────────────── */
     .problem { background: linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%); }
-    .problem-hd { text-align: center; margin-bottom: 36px; }
+    .problem-hd { text-align: center; margin-bottom: clamp(20px, 3.5vh, 36px); }
     .problem-hd .sec-sub { margin: 0 auto; }
 
     .prob-grid {
@@ -344,7 +355,7 @@
       background: var(--bg-card);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 28px 32px;
+      padding: clamp(16px, 2.5vh, 28px) 24px;
       position: relative;
       overflow: hidden;
       transition: border-color .3s;
@@ -360,18 +371,18 @@
     .prob-card:hover { border-color: var(--border-h); }
 
     .prob-icon {
-      width: 48px; height: 48px;
+      width: 44px; height: 44px;
       border-radius: 12px;
       display: flex; align-items: center; justify-content: center;
-      margin-bottom: 20px;
+      margin-bottom: clamp(10px, 1.5vh, 20px);
     }
     .prob-icon.gi { background: rgba(39,174,96,.14); color: var(--green-l); }
     .prob-icon.bi { background: rgba(45,156,219,.14); color: var(--blue-l); }
     .prob-icon svg { width: 22px; height: 22px; }
 
-    .prob-card h3 { font-size: 22px; margin-bottom: 18px; }
+    .prob-card h3 { font-size: 20px; margin-bottom: clamp(10px, 1.5vh, 18px); }
 
-    .prob-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .prob-list { list-style: none; display: flex; flex-direction: column; gap: clamp(8px, 1.2vh, 12px); }
     .prob-list li {
       display: flex;
       align-items: flex-start;
@@ -395,19 +406,19 @@
        OFFERS
     ───────────────────────────────────────── */
     .offers { background: var(--bg); }
-    .offers-hd { text-align: center; margin-bottom: 36px; }
+    .offers-hd { text-align: center; margin-bottom: clamp(20px, 3.5vh, 36px); }
     .offers-hd .sec-sub { margin: 0 auto; }
 
     .offers-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 24px;
+      gap: clamp(14px, 2vw, 24px);
     }
     .offer-card {
       background: var(--bg-card);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 32px 36px;
+      padding: clamp(20px, 3vh, 32px) clamp(20px, 2.5vw, 36px);
       position: relative;
       overflow: hidden;
       transition: transform .3s ease, box-shadow .3s ease;
@@ -419,15 +430,15 @@
     .offer-card.g { border-top: 2px solid var(--green); }
     .offer-card.b { border-top: 2px solid var(--blue); }
 
-    .offer-card h3 { font-size: 28px; margin-bottom: 12px; }
-    .offer-desc { font-size: 15px; color: var(--text-m); margin-bottom: 32px; line-height: 1.7; }
+    .offer-card h3 { font-size: 24px; margin-bottom: clamp(8px, 1.2vh, 12px); }
+    .offer-desc { font-size: 14px; color: var(--text-m); margin-bottom: clamp(16px, 2.5vh, 32px); line-height: 1.65; }
 
     .svc-list {
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 10px;
-      margin-bottom: 24px;
+      gap: clamp(6px, 1vh, 10px);
+      margin-bottom: clamp(14px, 2vh, 24px);
     }
     .svc-list li {
       display: flex;
@@ -503,7 +514,7 @@
        TOOLS
     ───────────────────────────────────────── */
     .tools-sec { background: var(--bg); text-align: center; }
-    .tools-hd { margin-bottom: 32px; }
+    .tools-hd { margin-bottom: clamp(18px, 3vh, 32px); }
     .tools-hd .sec-sub { margin: 0 auto; }
 
     .tools-grid {
@@ -540,7 +551,7 @@
        PRICING
     ───────────────────────────────────────── */
     .pricing-sec { background: linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%); }
-    .pricing-hd { text-align: center; margin-bottom: 36px; }
+    .pricing-hd { text-align: center; margin-bottom: clamp(20px, 3.5vh, 36px); }
     .pricing-hd .sec-sub { margin: 0 auto; }
 
     .pricing-grid {
@@ -554,7 +565,7 @@
       background: var(--bg-card);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 32px 28px;
+      padding: clamp(20px, 3vh, 32px) clamp(16px, 2vw, 28px);
       position: relative;
       overflow: hidden;
       transition: transform .3s;
@@ -571,7 +582,7 @@
       height: 2px;
       background: var(--grad);
     }
-    .price-lbl { display: block; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .13em; margin-bottom: 20px; }
+    .price-lbl { display: block; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .13em; margin-bottom: clamp(10px, 1.5vh, 20px); }
     .price-lbl.g { color: var(--green-l); }
     .price-lbl.b { color: var(--blue-l); }
     .price-amount { font-family: 'DM Serif Display', serif; font-size: 42px; }
@@ -582,7 +593,7 @@
       display: flex;
       align-items: stretch;
       gap: 0;
-      margin-bottom: 28px;
+      margin-bottom: clamp(16px, 2.5vh, 28px);
       border: 1px solid var(--border);
       border-radius: 12px;
       overflow: hidden;
@@ -622,9 +633,9 @@
       text-align: center;
       margin: -18px 0 24px;
     }
-    .price-name { font-size: 22px; margin-bottom: 10px; }
-    .price-desc { font-size: 14px; color: var(--text-m); margin-bottom: 32px; line-height: 1.6; }
-    .price-feats { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+    .price-name { font-size: 20px; margin-bottom: 8px; }
+    .price-desc { font-size: 13px; color: var(--text-m); margin-bottom: clamp(14px, 2vh, 32px); line-height: 1.6; }
+    .price-feats { list-style: none; display: flex; flex-direction: column; gap: clamp(6px, 1vh, 10px); margin-bottom: clamp(12px, 2vh, 24px); }
     .price-feats li { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--text-m); }
 
     /* ─────────────────────────────────────────
@@ -641,55 +652,55 @@
       background: var(--bg-card);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 32px;
+      padding: clamp(20px, 3vh, 32px);
       position: relative;
       overflow: hidden;
     }
     .avatar {
-      width: 72px; height: 72px;
+      width: 64px; height: 64px;
       border-radius: 50%;
       background: var(--grad);
       display: flex; align-items: center; justify-content: center;
       font-family: 'DM Serif Display', serif;
-      font-size: 28px;
+      font-size: 26px;
       color: #fff;
-      margin-bottom: 20px;
+      margin-bottom: clamp(12px, 1.8vh, 20px);
     }
-    .about-name { font-family: 'DM Serif Display', serif; font-size: 22px; margin-bottom: 4px; }
-    .about-role { font-size: 13px; color: var(--text-m); margin-bottom: 20px; }
-    .about-quote { font-size: 15px; color: var(--text-m); line-height: 1.75; font-style: italic; }
+    .about-name { font-family: 'DM Serif Display', serif; font-size: 20px; margin-bottom: 4px; }
+    .about-role { font-size: 13px; color: var(--text-m); margin-bottom: clamp(12px, 1.8vh, 20px); }
+    .about-quote { font-size: 14px; color: var(--text-m); line-height: 1.7; font-style: italic; }
     .stats {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 14px;
-      margin-top: 28px;
+      gap: 12px;
+      margin-top: clamp(14px, 2vh, 28px);
     }
     .stat {
       background: rgba(255,255,255,.03);
       border: 1px solid var(--border);
       border-radius: 12px;
-      padding: 20px;
+      padding: clamp(12px, 1.8vh, 20px);
     }
     .stat-n {
       font-family: 'DM Serif Display', serif;
-      font-size: 32px;
+      font-size: clamp(22px, 3vh, 32px);
       background: var(--grad-t);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
-    .stat-l { font-size: 13px; color: var(--text-m); margin-top: 4px; }
+    .stat-l { font-size: 12px; color: var(--text-m); margin-top: 4px; }
 
-    .about-txt h2 { font-size: clamp(28px, 3.5vw, 44px); margin-bottom: 24px; }
-    .about-txt p { font-size: 16px; color: var(--text-m); line-height: 1.8; margin-bottom: 18px; }
+    .about-txt h2 { font-size: clamp(24px, min(3.2vw, 5.5vh), 40px); margin-bottom: clamp(14px, 2vh, 24px); }
+    .about-txt p { font-size: 15px; color: var(--text-m); line-height: 1.75; margin-bottom: clamp(10px, 1.5vh, 18px); }
 
     /* ─────────────────────────────────────────
        FAQ
     ───────────────────────────────────────── */
     .faq-sec { background: linear-gradient(180deg, var(--bg-2) 0%, var(--bg) 100%); }
-    .faq-hd { text-align: center; margin-bottom: 36px; }
+    .faq-hd { text-align: center; margin-bottom: clamp(20px, 3.5vh, 36px); }
 
-    .faq-list { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 8px; }
+    .faq-list { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 6px; }
     .faq-item {
       background: var(--bg-card);
       border: 1px solid var(--border);
@@ -700,9 +711,9 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 22px 26px;
+      padding: clamp(14px, 2vh, 22px) 24px;
       cursor: pointer;
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 500;
       transition: color .2s;
       user-select: none;
@@ -732,7 +743,7 @@
       background: var(--bg-card);
       border: 1px solid rgba(45,156,219,.2);
       border-radius: 24px;
-      padding: 56px 48px;
+      padding: clamp(28px, 5vh, 56px) clamp(24px, 4vw, 48px);
       position: relative;
       overflow: hidden;
     }
@@ -746,8 +757,8 @@
       background: radial-gradient(ellipse, rgba(45,156,219,.1) 0%, transparent 70%);
       pointer-events: none;
     }
-    .cta-box h2 { font-size: clamp(30px, 5vw, 54px); margin-bottom: 18px; position: relative; }
-    .cta-box p { font-size: 18px; color: var(--text-m); max-width: 480px; margin: 0 auto 48px; font-weight: 300; }
+    .cta-box h2 { font-size: clamp(26px, min(4.5vw, 7vh), 50px); margin-bottom: clamp(10px, 1.5vh, 18px); position: relative; }
+    .cta-box p { font-size: clamp(15px, 1.8vw, 18px); color: var(--text-m); max-width: 480px; margin: 0 auto clamp(24px, 3.5vh, 48px); font-weight: 300; }
     .cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
 
     /* ─────────────────────────────────────────
@@ -756,33 +767,33 @@
     footer {
       background: var(--bg);
       border-top: 1px solid var(--border);
-      padding: 40px 0 28px;
+      padding: 24px 0 14px;
     }
     .footer-in {
       display: grid;
       grid-template-columns: 1.5fr 1fr 1fr;
-      gap: 40px;
-      margin-bottom: 32px;
+      gap: clamp(20px, 3vw, 40px);
+      margin-bottom: clamp(12px, 1.8vh, 24px);
     }
-    .footer-brand p { font-size: 14px; color: var(--text-m); margin-top: 16px; max-width: 260px; line-height: 1.7; }
+    .footer-brand p { font-size: 13px; color: var(--text-m); margin-top: clamp(8px, 1.2vh, 16px); max-width: 260px; line-height: 1.65; }
     .footer-col h4 {
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: .12em;
       color: var(--text-d);
-      margin-bottom: 20px;
+      margin-bottom: clamp(10px, 1.2vh, 18px);
     }
-    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
-    .footer-col ul li a { font-size: 14px; color: var(--text-m); transition: color .2s; cursor: pointer; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .footer-col ul li a { font-size: 13px; color: var(--text-m); transition: color .2s; cursor: pointer; }
     .footer-col ul li a:hover { color: var(--text); }
     .footer-btm {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding-top: 28px;
+      padding-top: clamp(12px, 1.8vh, 24px);
       border-top: 1px solid var(--border);
-      font-size: 13px;
+      font-size: 12px;
       color: var(--text-d);
     }
     .footer-btm a { color: var(--text-m); transition: color .2s; }
@@ -896,13 +907,15 @@
        CTA SVG DIAGRAM
     ───────────────────────────────────────── */
     .cta-diagram {
-      margin: 0 auto 40px;
-      max-width: 680px;
+      margin: 0 auto clamp(12px, 2vh, 36px);
+      max-width: 560px;
+      height: clamp(80px, 18vh, 200px);
+      overflow: hidden;
       opacity: .9;
     }
     .cta-lines-svg {
-      width: 100%;
-      height: auto;
+      width: auto;
+      height: 100%;
       overflow: visible;
     }
     .cta-base {
@@ -941,9 +954,16 @@
       .steps { grid-template-columns: 1fr; }
       .steps-wrap::before, .steps-wrap::after { display: none; }
       .tools-grid { grid-template-columns: 1fr 1fr; }
-      section { padding: 48px 0; }
-      .cta-box { padding: 48px 32px; }
-      .footer-in { gap: 36px; }
+      section { padding: clamp(24px, 3.5vh, 48px) 0; }
+      .cta-box { padding: clamp(24px, 4vh, 48px) 24px; }
+      .footer-in { gap: 28px; }
+      /* Libère les sections de leur hauteur fixe sur mobile / tablette */
+      .problem, .offers, .tools-sec, .pricing-sec, .about-sec, .cta-sec {
+        height: auto;
+        min-height: 0;
+        overflow: visible;
+        display: block;
+      }
     }
 
     @media (max-width: 600px) {
