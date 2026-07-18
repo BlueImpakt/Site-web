@@ -1,0 +1,2499 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blue Impakt — L'IA au service de l'environnement et de l'humain</title>
+  <meta name="description" content="Blue Impakt accompagne les associations environnementales et les PME avec l'IA et le no-code. Automatisations, agents IA, conseil stratégique.">
+  <meta property="og:title" content="Blue Impakt — L'IA au service de l'environnement et de l'humain">
+  <meta property="og:description" content="Accompagnement IA et no-code pour associations environnementales et PME. Automatisations, agents, conseil stratégique.">
+  <meta property="og:type" content="website">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+  <style>
+    /* ─────────────────────────────────────────
+       RESET & TOKENS
+    ───────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:          #07111D;
+      --bg-2:        #0B1929;
+      --bg-card:     #0D1E30;
+      --bg-card-h:   #112238;
+      --blue:        #2D9CDB;
+      --blue-l:      #56B6F7;
+      --green:       #27AE60;
+      --green-l:     #4BD68A;
+      --text:        #EDF2F7;
+      --text-m:      #718096;
+      --text-d:      #3D5068;
+      --border:      rgba(255,255,255,0.07);
+      --border-h:    rgba(255,255,255,0.13);
+      --grad:        linear-gradient(135deg, #2D9CDB, #27AE60);
+      --grad-t:      linear-gradient(135deg, #56B6F7, #4BD68A);
+      --radius:      16px;
+      --radius-s:    10px;
+    }
+
+    /* scroll-behavior handled by Lenis */
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 { font-family: 'DM Serif Display', serif; line-height: 1.15; }
+    a { text-decoration: none; color: inherit; }
+
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 32px; }
+
+    /* ─────────────────────────────────────────
+       UTILITIES
+    ───────────────────────────────────────── */
+    .grad-text {
+      background: var(--grad-t);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .13em;
+      padding: 4px 12px;
+      border-radius: 4px;
+      margin-bottom: 24px;
+    }
+    .tag-green { background: rgba(39,174,96,.15); color: var(--green-l); }
+    .tag-blue  { background: rgba(45,156,219,.15); color: var(--blue-l); }
+
+    .sec-label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--blue-l);
+      margin-bottom: 14px;
+    }
+
+    .sec-title {
+      font-size: clamp(30px, 4.5vw, 50px);
+      margin-bottom: 18px;
+    }
+
+    .sec-sub {
+      font-size: 17px;
+      color: var(--text-m);
+      max-width: 540px;
+      font-weight: 300;
+    }
+
+    section { padding: 100px 0; }
+
+    /* ─────────────────────────────────────────
+       BUTTONS
+    ───────────────────────────────────────── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 50px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all .25s ease;
+      border: none;
+      text-align: center;
+      justify-content: center;
+    }
+    .btn-primary {
+      background: var(--grad);
+      color: #fff;
+      box-shadow: 0 0 28px rgba(45,156,219,.28);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 44px rgba(45,156,219,.48);
+    }
+    .btn-ghost {
+      background: rgba(255,255,255,.05);
+      color: var(--text);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+    }
+    .btn-ghost:hover {
+      background: rgba(255,255,255,.09);
+      border-color: var(--border-h);
+    }
+    .btn-wide { width: 100%; }
+
+    /* ─────────────────────────────────────────
+       CHECK MARKS
+    ───────────────────────────────────────── */
+    .chk {
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .chk-g { background: rgba(39,174,96,.18); color: var(--green-l); }
+    .chk-b { background: rgba(45,156,219,.18); color: var(--blue-l); }
+    .chk svg { width: 11px; height: 11px; }
+
+    /* ─────────────────────────────────────────
+       NAV
+    ───────────────────────────────────────── */
+    #nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      padding: 22px 0;
+      transition: all .3s ease;
+    }
+    #nav.stuck {
+      background: rgba(7,17,29,.88);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 0;
+    }
+    .nav-in {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'DM Serif Display', serif;
+      font-size: 20px;
+      cursor: pointer;
+    }
+    .logo-sq {
+      width: 36px; height: 36px;
+      border-radius: 10px;
+      background: var(--grad);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .logo-sq svg { width: 18px; height: 18px; fill: #fff; }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 34px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 14px;
+      color: var(--text-m);
+      font-weight: 500;
+      transition: color .2s;
+      cursor: pointer;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-btn { padding: 10px 22px; font-size: 14px; }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px; height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: all .3s;
+    }
+
+    /* ─────────────────────────────────────────
+       HERO
+    ───────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 140px 0 90px;
+      position: relative;
+      overflow: hidden;
+    }
+    /* dot-grid remplacé par le canvas hero */
+    .hero::before { display: none; }
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(90px);
+      opacity: .13;
+      pointer-events: none;
+    }
+    .orb-1 { width: 560px; height: 560px; background: var(--blue); top: -120px; left: -140px; }
+    .orb-2 { width: 440px; height: 440px; background: var(--green); bottom: -80px; right: -100px; }
+
+    .hero-content { position: relative; max-width: 860px; z-index: 1; }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      background: rgba(45,156,219,.1);
+      border: 1px solid rgba(45,156,219,.25);
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--blue-l);
+      letter-spacing: .02em;
+      margin-bottom: 32px;
+    }
+    .badge-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--green-l);
+      animation: pulse 2s ease infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: .4; transform: scale(.8); }
+    }
+
+    .hero h1 {
+      font-size: clamp(46px, 7.5vw, 92px);
+      font-weight: 400;
+      letter-spacing: -.025em;
+      margin-bottom: 28px;
+    }
+    .hero-sub {
+      font-size: clamp(16px, 2.2vw, 20px);
+      color: var(--text-m);
+      max-width: 580px;
+      margin: 0 auto 48px;
+      font-weight: 300;
+    }
+    .hero-ctas {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 80px;
+    }
+
+    .tools-row-label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      color: var(--text-d);
+      margin-bottom: 18px;
+    }
+    .tools-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+    .tool-pill {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 13px;
+      color: var(--text-m);
+      font-weight: 500;
+      transition: border-color .2s, color .2s;
+    }
+    .tool-pill svg { width: 16px; height: 16px; flex-shrink: 0; }
+    .tool-pill:hover { border-color: var(--border-h); color: var(--text); }
+
+    /* ─────────────────────────────────────────
+       PROBLEM
+    ───────────────────────────────────────── */
+    .problem { background: linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%); }
+    .problem-hd { text-align: center; margin-bottom: 64px; }
+    .problem-hd .sec-sub { margin: 0 auto; }
+
+    .prob-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+    .prob-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 40px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color .3s;
+    }
+    .prob-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+    }
+    .prob-card.g::before { background: linear-gradient(90deg, var(--green), transparent); }
+    .prob-card.b::before { background: linear-gradient(90deg, var(--blue), transparent); }
+    .prob-card:hover { border-color: var(--border-h); }
+
+    .prob-icon {
+      width: 48px; height: 48px;
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px;
+    }
+    .prob-icon.gi { background: rgba(39,174,96,.14); color: var(--green-l); }
+    .prob-icon.bi { background: rgba(45,156,219,.14); color: var(--blue-l); }
+    .prob-icon svg { width: 22px; height: 22px; }
+
+    .prob-card h3 { font-size: 22px; margin-bottom: 18px; }
+
+    .prob-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .prob-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 15px;
+      color: var(--text-m);
+    }
+    .x-dot {
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      background: rgba(229,62,62,.14);
+      color: #FC8181;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* ─────────────────────────────────────────
+       OFFERS
+    ───────────────────────────────────────── */
+    .offers { background: var(--bg); }
+    .offers-hd { text-align: center; margin-bottom: 64px; }
+    .offers-hd .sec-sub { margin: 0 auto; }
+
+    .offers-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    .offer-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 48px;
+      position: relative;
+      overflow: hidden;
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+    .offer-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 24px 60px rgba(0,0,0,.45);
+    }
+    .offer-card.g { border-top: 2px solid var(--green); }
+    .offer-card.b { border-top: 2px solid var(--blue); }
+
+    .offer-card h3 { font-size: 28px; margin-bottom: 12px; }
+    .offer-desc { font-size: 15px; color: var(--text-m); margin-bottom: 32px; line-height: 1.7; }
+
+    .svc-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 40px;
+    }
+    .svc-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 15px;
+    }
+
+    /* ─────────────────────────────────────────
+       HOW IT WORKS
+    ───────────────────────────────────────── */
+    .how { background: linear-gradient(180deg, var(--bg-2) 0%, var(--bg) 100%); }
+    .how-hd { text-align: center; margin-bottom: 64px; }
+    .how-hd .sec-sub { margin: 0 auto; }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .step {
+      text-align: center;
+      padding: 40px 28px;
+    }
+    .step-num {
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      margin: 0 auto 28px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'DM Serif Display', serif;
+      font-size: 26px;
+    }
+    .step:nth-child(1) .step-num {
+      background: rgba(39,174,96,.12);
+      border: 1px solid rgba(39,174,96,.3);
+      color: var(--green-l);
+    }
+    .step:nth-child(2) .step-num {
+      background: rgba(45,156,219,.12);
+      border: 1px solid rgba(45,156,219,.3);
+      color: var(--blue-l);
+    }
+    .step:nth-child(3) .step-num {
+      background: linear-gradient(135deg, rgba(39,174,96,.12), rgba(45,156,219,.12));
+      border: 1px solid rgba(86,182,247,.3);
+      color: var(--text);
+    }
+    .step h3 { font-size: 22px; margin-bottom: 12px; }
+    .step p { font-size: 15px; color: var(--text-m); line-height: 1.7; }
+
+    /* connector line */
+    .steps-wrap { position: relative; }
+    .steps-wrap::before {
+      content: '';
+      position: absolute;
+      top: 72px;
+      left: calc(33.3% + 4px);
+      width: calc(33.4% - 8px);
+      height: 1px;
+      background: linear-gradient(90deg, rgba(39,174,96,.3), rgba(45,156,219,.3));
+    }
+    .steps-wrap::after {
+      content: '';
+      position: absolute;
+      top: 72px;
+      left: calc(66.6% + 4px);
+      width: calc(33.4% - 8px);
+      height: 1px;
+      background: linear-gradient(90deg, rgba(45,156,219,.3), rgba(86,182,247,.3));
+    }
+
+    /* ─────────────────────────────────────────
+       TOOLS
+    ───────────────────────────────────────── */
+    .tools-sec { background: var(--bg); text-align: center; }
+    .tools-hd { margin-bottom: 60px; }
+    .tools-hd .sec-sub { margin: 0 auto; }
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 56px;
+    }
+    .tool-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px 26px;
+      text-align: left;
+      cursor: default;
+      transition: border-color .25s, background .25s, transform .25s;
+    }
+    .tool-card:hover {
+      border-color: rgba(45,156,219,.28);
+      background: var(--bg-card-h);
+      transform: translateY(-2px);
+    }
+    .tool-icon {
+      width: 48px; height: 48px;
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 18px;
+    }
+    .tool-icon svg { width: 24px; height: 24px; }
+    .tool-name { font-family: 'DM Serif Display', serif; font-size: 20px; margin-bottom: 8px; }
+    .tool-desc { font-size: 14px; color: var(--text-m); line-height: 1.6; }
+
+    /* ─────────────────────────────────────────
+       PRICING
+    ───────────────────────────────────────── */
+    .pricing-sec { background: linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%); }
+    .pricing-hd { text-align: center; margin-bottom: 64px; }
+    .pricing-hd .sec-sub { margin: 0 auto; }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .price-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 48px 40px;
+      position: relative;
+      overflow: hidden;
+      transition: transform .3s;
+    }
+    .price-card:hover { transform: translateY(-4px); }
+    .price-card.featured {
+      border-color: rgba(45,156,219,.3);
+      background: #0D2035;
+    }
+    .price-card.featured::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--grad);
+    }
+    .price-lbl { display: block; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .13em; margin-bottom: 20px; }
+    .price-lbl.g { color: var(--green-l); }
+    .price-lbl.b { color: var(--blue-l); }
+    .price-amount { font-family: 'DM Serif Display', serif; font-size: 42px; }
+    .price-per { font-size: 14px; color: var(--text-m); margin-bottom: 28px; margin-top: 2px; }
+
+    /* Dual pricing */
+    .price-dual {
+      display: flex;
+      align-items: stretch;
+      gap: 0;
+      margin-bottom: 28px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .price-tier {
+      flex: 1;
+      padding: 16px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .price-tier:first-child {
+      border-right: 1px solid var(--border);
+    }
+    .price-tier-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--text-d);
+    }
+    .price-tier-amount {
+      font-family: 'DM Serif Display', serif;
+      font-size: 26px;
+      line-height: 1.1;
+    }
+    .price-tier-unit {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      color: var(--text-m);
+      font-weight: 400;
+    }
+    .price-note {
+      font-size: 11.5px;
+      color: var(--text-d);
+      font-style: italic;
+      text-align: center;
+      margin: -18px 0 24px;
+    }
+    .price-name { font-size: 22px; margin-bottom: 10px; }
+    .price-desc { font-size: 14px; color: var(--text-m); margin-bottom: 32px; line-height: 1.6; }
+    .price-feats { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 40px; }
+    .price-feats li { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--text-m); }
+
+    /* ─────────────────────────────────────────
+       ABOUT
+    ───────────────────────────────────────── */
+    .about-sec { background: var(--bg); }
+    .about-in {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .about-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 44px;
+      position: relative;
+      overflow: hidden;
+    }
+    .avatar {
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      background: var(--grad);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'DM Serif Display', serif;
+      font-size: 28px;
+      color: #fff;
+      margin-bottom: 20px;
+    }
+    .about-name { font-family: 'DM Serif Display', serif; font-size: 22px; margin-bottom: 4px; }
+    .about-role { font-size: 13px; color: var(--text-m); margin-bottom: 20px; }
+    .about-quote { font-size: 15px; color: var(--text-m); line-height: 1.75; font-style: italic; }
+    .stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 28px;
+    }
+    .stat {
+      background: rgba(255,255,255,.03);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+    }
+    .stat-n {
+      font-family: 'DM Serif Display', serif;
+      font-size: 32px;
+      background: var(--grad-t);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .stat-l { font-size: 13px; color: var(--text-m); margin-top: 4px; }
+
+    .about-txt h2 { font-size: clamp(28px, 3.5vw, 44px); margin-bottom: 24px; }
+    .about-txt p { font-size: 16px; color: var(--text-m); line-height: 1.8; margin-bottom: 18px; }
+
+    /* ─────────────────────────────────────────
+       FAQ
+    ───────────────────────────────────────── */
+    .faq-sec { background: linear-gradient(180deg, var(--bg-2) 0%, var(--bg) 100%); }
+    .faq-hd { text-align: center; margin-bottom: 60px; }
+
+    .faq-list { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 8px; }
+    .faq-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-s);
+      overflow: hidden;
+    }
+    .faq-q {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 26px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 500;
+      transition: color .2s;
+      user-select: none;
+    }
+    .faq-q:hover { color: var(--blue-l); }
+    .faq-ic {
+      width: 24px; height: 24px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.05);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      margin-left: 16px;
+      transition: transform .3s, background .3s;
+    }
+    .faq-ic svg { width: 12px; height: 12px; transition: transform .3s; }
+    .faq-item.open .faq-ic { background: rgba(45,156,219,.15); color: var(--blue-l); }
+    .faq-item.open .faq-ic svg { transform: rotate(45deg); }
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height .4s ease; }
+    .faq-item.open .faq-a { max-height: 300px; }
+    .faq-a p { padding: 0 26px 24px; color: var(--text-m); font-size: 15px; line-height: 1.75; }
+
+    /* ─────────────────────────────────────────
+       CTA FINAL
+    ───────────────────────────────────────── */
+    .cta-sec { background: var(--bg); text-align: center; }
+    .cta-box {
+      background: var(--bg-card);
+      border: 1px solid rgba(45,156,219,.2);
+      border-radius: 24px;
+      padding: 88px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-box::before {
+      content: '';
+      position: absolute;
+      top: -120px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 700px; height: 360px;
+      background: radial-gradient(ellipse, rgba(45,156,219,.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cta-box h2 { font-size: clamp(30px, 5vw, 54px); margin-bottom: 18px; position: relative; }
+    .cta-box p { font-size: 18px; color: var(--text-m); max-width: 480px; margin: 0 auto 48px; font-weight: 300; }
+    .cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    /* ─────────────────────────────────────────
+       FOOTER
+    ───────────────────────────────────────── */
+    footer {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 64px 0 40px;
+    }
+    .footer-in {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 60px;
+      margin-bottom: 56px;
+    }
+    .footer-brand p { font-size: 14px; color: var(--text-m); margin-top: 16px; max-width: 260px; line-height: 1.7; }
+    .footer-col h4 {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--text-d);
+      margin-bottom: 20px;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .footer-col ul li a { font-size: 14px; color: var(--text-m); transition: color .2s; cursor: pointer; }
+    .footer-col ul li a:hover { color: var(--text); }
+    .footer-btm {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 28px;
+      border-top: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--text-d);
+    }
+    .footer-btm a { color: var(--text-m); transition: color .2s; }
+    .footer-btm a:hover { color: var(--text); }
+
+    /* ─────────────────────────────────────────
+       SCROLL ANIMATIONS
+    ───────────────────────────────────────── */
+    .fu {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .fu.vis {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .fu:nth-child(2) { transition-delay: .1s; }
+    .fu:nth-child(3) { transition-delay: .2s; }
+    .fu:nth-child(4) { transition-delay: .3s; }
+    .fu:nth-child(5) { transition-delay: .4s; }
+    .fu:nth-child(6) { transition-delay: .5s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .fu { opacity: 1; transform: none; transition: none; }
+      .badge-dot { animation: none; }
+    }
+
+    /* ─────────────────────────────────────────
+       HERO CANVAS
+    ───────────────────────────────────────── */
+    #strings-wrap {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+    }
+    #strings-canvas {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* ─────────────────────────────────────────
+       PIXEL-DISSOLVE TRANSITIONS
+    ───────────────────────────────────────── */
+    .pixel-transition {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 20;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .pixel-transition.is-solid::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--px-solid);
+      z-index: 1;
+    }
+    .pixel-grid {
+      display: grid;
+      overflow: hidden;
+    }
+    .pixel {
+      /* no CSS transition — JS updates directly */
+    }
+
+    /* ─────────────────────────────────────────
+       LINE-REVEAL (nav hover)
+    ───────────────────────────────────────── */
+    [data-line-reveal] {
+      overflow: hidden;
+      display: inline-block;
+      vertical-align: top;
+    }
+    [data-line-reveal] .line-inner {
+      display: block;
+      position: relative;
+      transition: transform 950ms cubic-bezier(0.16,1,0.3,1);
+    }
+    [data-line-reveal] .line-inner::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 100%;
+      left: 0;
+      white-space: nowrap;
+    }
+    @media (hover: hover) and (pointer: fine) {
+      [data-line-reveal]:hover .line-inner {
+        transform: translateY(-100%);
+      }
+    }
+
+    /* ─────────────────────────────────────────
+       HEADER LIGHT/DARK (section réactive)
+    ───────────────────────────────────────── */
+    #nav { transition: background .3s ease, padding .3s ease, color .2s; }
+    #nav.is-light {
+      --text: #151515;
+      --text-m: #555;
+    }
+    #nav.is-light .nav-links a { color: #555; }
+    #nav.is-light .nav-links a:hover { color: #151515; }
+    #nav.is-light .logo-sq { box-shadow: 0 2px 12px rgba(0,0,0,.12); }
+
+    /* ─────────────────────────────────────────
+       CTA SVG DIAGRAM
+    ───────────────────────────────────────── */
+    .cta-diagram {
+      margin: 0 auto 40px;
+      max-width: 680px;
+      opacity: .9;
+    }
+    .cta-lines-svg {
+      width: 100%;
+      height: auto;
+      overflow: visible;
+    }
+    .cta-base {
+      fill: none;
+      stroke-linecap: round;
+    }
+    .cta-pulse-path {
+      fill: none;
+      stroke-linecap: round;
+      opacity: 0;
+    }
+    .cta-cap {
+      opacity: 0;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+    }
+
+    /* ─────────────────────────────────────────
+       FLICKER TAG
+    ───────────────────────────────────────── */
+    @keyframes cubeTagFlicker {
+      0%, 100% { opacity: 1; }
+      30%       { opacity: .5; }
+      55%       { opacity: .22; }
+      80%       { opacity: .88; }
+    }
+
+    /* ─────────────────────────────────────────
+       RESPONSIVE
+    ───────────────────────────────────────── */
+    @media (max-width: 960px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .prob-grid, .offers-grid, .about-in, .footer-in { grid-template-columns: 1fr; }
+      .pricing-grid { grid-template-columns: 1fr; max-width: 480px; }
+      .steps { grid-template-columns: 1fr; }
+      .steps-wrap::before, .steps-wrap::after { display: none; }
+      .tools-grid { grid-template-columns: 1fr 1fr; }
+      section { padding: 72px 0; }
+      .cta-box { padding: 56px 32px; }
+      .footer-in { gap: 36px; }
+    }
+
+    @media (max-width: 600px) {
+      .container { padding: 0 20px; }
+      .hero h1 { font-size: 42px; }
+      .tools-grid { grid-template-columns: 1fr; }
+      .hero-ctas { flex-direction: column; width: 100%; }
+      .hero-ctas .btn { width: 100%; }
+      .cta-btns { flex-direction: column; }
+      .cta-btns .btn { width: 100%; }
+      .offer-card, .price-card { padding: 36px 28px; }
+    }
+
+    /* Mobile menu open */
+    #mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: 190;
+      background: rgba(7,17,29,.97);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+    }
+    #mobile-menu.open { display: flex; }
+    #mobile-menu a {
+      font-family: 'DM Serif Display', serif;
+      font-size: 28px;
+      color: var(--text);
+      cursor: pointer;
+      transition: color .2s;
+    }
+    #mobile-menu a:hover { color: var(--blue-l); }
+    #mobile-close {
+      position: absolute;
+      top: 22px; right: 28px;
+      cursor: pointer;
+      color: var(--text-m);
+      font-size: 28px;
+      line-height: 1;
+      background: none;
+      border: none;
+      color: var(--text);
+    }
+
+    /* ─── Horizontal carousel (outils, desktop) ─── */
+    @media (min-width: 992px) {
+      .tools-sec { overflow: hidden; }
+      .tools-grid.carousel-active {
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: flex-start;
+        gap: 20px;
+        padding-top: 80px;
+        will-change: transform;
+      }
+      .tools-grid.carousel-active .tool-card {
+        flex: 0 0 310px;
+        width: 310px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     NAV
+══════════════════════════════════════════ -->
+<nav id="nav">
+  <div class="container">
+    <div class="nav-in">
+      <a href="#" class="nav-logo" aria-label="Blue Impakt — Accueil">
+        <div class="logo-sq">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+          </svg>
+        </div>
+        Blue Impakt
+      </a>
+      <ul class="nav-links" role="navigation" aria-label="Navigation principale">
+        <li><a href="#accompagnements" data-line-reveal="">Accompagnements</a></li>
+        <li><a href="#methode" data-line-reveal="">Méthode</a></li>
+        <li><a href="#tarifs" data-line-reveal="">Tarifs</a></li>
+        <li><a href="#about" data-line-reveal="">À propos</a></li>
+      </ul>
+      <a href="https://cal.eu/melvin-perrottet/45min" data-cal-link="melvin-perrottet/45min" data-cal-origin="https://cal.eu" class="btn btn-primary nav-btn">Réserver un appel</a>
+      <button class="hamburger" id="hamburger" aria-label="Ouvrir le menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile menu -->
+<div id="mobile-menu" role="dialog" aria-label="Menu de navigation mobile">
+  <button id="mobile-close" aria-label="Fermer le menu">✕</button>
+  <a href="#accompagnements">Accompagnements</a>
+  <a href="#methode">Méthode</a>
+  <a href="#tarifs">Tarifs</a>
+  <a href="#about">À propos</a>
+  <a href="https://cal.eu/melvin-perrottet/45min" data-cal-link="melvin-perrottet/45min" data-cal-origin="https://cal.eu" class="btn btn-primary" style="margin-top:8px;">Réserver un appel</a>
+</div>
+
+<!-- ══════════════════════════════════════════
+     HERO
+══════════════════════════════════════════ -->
+<section class="hero" id="hero">
+  <div id="strings-wrap"><canvas id="strings-canvas"></canvas></div>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        L'IA au service de l'environnement et de l'humain
+      </div>
+
+      <h1>
+        L'IA qui résout.<br>
+        <span class="grad-text">L'impact qui dure.</span>
+      </h1>
+
+      <p class="hero-sub">
+        Nous aidons les associations environnementales et les PME à automatiser l'essentiel — pour se concentrer sur ce qui compte vraiment.
+      </p>
+
+      <div class="hero-ctas">
+        <a href="https://cal.eu/melvin-perrottet/45min" data-cal-link="melvin-perrottet/45min" data-cal-origin="https://cal.eu" class="btn btn-primary">
+          Réserver un appel découverte
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#accompagnements" class="btn btn-ghost">
+          Voir les accompagnements
+        </a>
+      </div>
+
+      <p class="tools-row-label">Outils maîtrisés</p>
+      <div class="tools-row">
+        <!-- Framer -->
+        <div class="tool-pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h14v8H5zM5 11l7 10 7-10"/></svg>
+          Framer
+        </div>
+        <!-- Notion -->
+        <div class="tool-pill">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 4h16v16H4z" opacity=".15" rx="2"/><path d="M7 7h6M7 12h4M7 17h8" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
+          Notion
+        </div>
+        <!-- Make -->
+        <div class="tool-pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="5" cy="12" r="2"/><circle cx="19" cy="7" r="2"/><circle cx="19" cy="17" r="2"/><path d="M7 12h5m2-5l4 5-4 5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Make
+        </div>
+        <!-- N8N -->
+        <div class="tool-pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5z" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          N8N
+        </div>
+        <!-- Agents IA -->
+        <div class="tool-pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="8" width="18" height="10" rx="2"/><path d="M7 8V5a5 5 0 0 1 10 0v3M9 14h.01M15 14h.01" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Agents IA
+        </div>
+        <!-- Claude Code -->
+        <div class="tool-pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          Claude Code
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pixel-transition"
+       data-trigger-id="hero"
+       data-target-id="probleme"
+       data-from="#07111D"
+       data-to="#0B1929"
+       data-accent="#2D9CDB">
+    <div class="pixel-grid"></div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     PROBLEM
+══════════════════════════════════════════ -->
+<section class="problem" id="probleme">
+  <div class="container">
+    <div class="problem-hd fu">
+      <span class="sec-label">Vous n'êtes pas seul</span>
+      <h2 class="sec-title">Vous manquez de temps,<br>pas d'idées.</h2>
+      <p class="sec-sub">
+        L'IA peut transformer votre organisation. Mais sans le bon accompagnement, elle reste une promesse floue.
+      </p>
+    </div>
+
+    <div class="prob-grid">
+      <div class="prob-card g fu">
+        <div class="prob-icon gi">
+          <!-- Leaf -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 8C8 10 5.9 16.17 3.82 19.5A4.37 4.37 0 0 0 7 21C11 21 15 17 17 11M17 8C17 4 15 2 12 2 12 8 7 12 3 12"/></svg>
+        </div>
+        <h3>Pour les associations</h3>
+        <ul class="prob-list">
+          <li><div class="x-dot" aria-hidden="true">×</div>Les dossiers de financement prennent des semaines entières</li>
+          <li><div class="x-dot" aria-hidden="true">×</div>La gestion de projets est morcelée entre dix outils différents</li>
+          <li><div class="x-dot" aria-hidden="true">×</div>Le reporting mobilise vos bénévoles sur des tâches ingrates</li>
+          <li><div class="x-dot" aria-hidden="true">×</div>Les partenariats prennent du temps à identifier et activer</li>
+          <li><div class="x-dot" aria-hidden="true">×</div>La stratégie se perd dans l'urgence du quotidien</li>
+        </ul>
+      </div>
+
+      <div class="prob-card b fu">
+        <div class="prob-icon bi">
+          <!-- Building -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M3 9h6M3 15h6M15 9h6M15 15h6"/></svg>
+        </div>
+        <h3>Pour les PME</h3>
+        <ul class="prob-list">
+          <li><div class="x-dot" aria-hidden="true">×</div>Vos processus manuels freinent votre croissance</li>
+          <li><div class="x-dot" aria-hidden="true">×</div>L'IA existe mais vous ne savez pas par où commencer</li>
+          <li><div class="x-dot" aria-hidden="true">×</div>Chaque automatisation semble nécessiter un développeur</li>
+          <li><div class="x-dot" aria-hidden="true">×</div>Vos équipes perdent des heures sur des tâches répétitives</li>
+          <li><div class="x-dot" aria-hidden="true">×</div>Les outils no-code vous semblent complexes à maîtriser</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     OFFERS
+══════════════════════════════════════════ -->
+<section class="offers" id="accompagnements">
+  <div class="container">
+    <div class="offers-hd fu">
+      <span class="sec-label">Accompagnements</span>
+      <h2 class="sec-title">Deux cibles.<br>Un seul objectif : votre impact.</h2>
+      <p class="sec-sub">Un accompagnement sur mesure, pensé pour votre réalité — associative ou entrepreneuriale.</p>
+    </div>
+
+    <div class="offers-grid">
+      <!-- ASSO -->
+      <div class="offer-card g fu">
+        <span class="tag tag-green">Associations environnementales</span>
+        <h3>Du conseil à l'action</h3>
+        <p class="offer-desc">
+          Stratégie, financement, gestion de projets et IA — un accompagnement complet pour les organisations qui veulent avoir plus d'impact avec moins de friction.
+        </p>
+        <ul class="svc-list">
+          <li>
+            <span class="chk chk-g"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 6 5 9 10 3"/></svg></span>
+            Conseil stratégique &amp; plan d'impact
+          </li>
+          <li>
+            <span class="chk chk-g"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 6 5 9 10 3"/></svg></span>
+            Montage de dossiers de financement
+          </li>
+          <li>
+            <span class="chk chk-g"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 6 5 9 10 3"/></svg></span>
+            Gestion de projets structurée avec Notion
+          </li>
+          <li>
+            <span class="chk chk-g"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 6 5 9 10 3"/></svg></span>
+            Automatisations IA : rapports & suivi terrain
+          </li>
+          <li>
+            <span class="chk chk-g"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 6 5 9 10 3"/></svg></span>
+            Identification et développement de partenariats
+          </li>
+          <li>
+            <span class="chk chk-g"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 6 5 9 10 3"/></svg></span>
+            Agents IA pour le suivi d'indicateurs d'impact
+          </li>
+        </ul>
+        <a href="https://cal.eu/melvin-perrottet/45min" data-cal-link="melvin-perrottet/45min" data-cal-origin="https://cal.eu" class="btn btn-ghost btn-wide" style="cursor:pointer;">
+          Discutons de votre projet
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <!-- PME -->
+      <div class="offer-card b fu">
+        <span class="tag tag-blue">PME &amp; Entreprises</span>
+        <h3>L'IA qui travaille à votre place</h3>
+        <p class="offer-desc">
+          Des automatisations concrètes, des agents IA sur mesure, des outils no-code déployés et adoptés par vos équipes — sans recruter un DSI.
+        </p>
+        <ul class="svc-list">
+          <li>
+            <span class="chk chk-b"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 6 5 9 10 3"/></svg></span>
+            Audit de vos processus et identification des gains rapides
+          </li>
+          <li>
+            <span class="chk chk-b"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 6 5 9 10 3"/></svg></span>
+            Automatisations métier avec Make et N8N
+          </li>
+          <li>
+            <span class="chk chk-b"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 6 5 9 10 3"/></svg></span>
+            Agents IA sur mesure (CRM, support, reporting)
+          </li>
+          <li>
+            <span class="chk chk-b"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 6 5 9 10 3"/></svg></span>
+            Workspaces Notion pour vos équipes
+          </li>
+          <li>
+            <span class="chk chk-b"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 6 5 9 10 3"/></svg></span>
+            Formation et montée en compétences
+          </li>
+          <li>
+            <span class="chk chk-b"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 6 5 9 10 3"/></svg></span>
+            Accompagnement jusqu'à l'autonomie complète
+          </li>
+        </ul>
+        <a href="https://cal.eu/melvin-perrottet/45min" data-cal-link="melvin-perrottet/45min" data-cal-origin="https://cal.eu" class="btn btn-primary btn-wide" style="cursor:pointer;">
+          Lancer mon projet
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="pixel-transition"
+       data-trigger-id="accompagnements"
+       data-target-id="methode"
+       data-from="#07111D"
+       data-to="#0B1929"
+       data-accent="#27AE60">
+    <div class="pixel-grid"></div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     HOW IT WORKS
+══════════════════════════════════════════ -->
+<section class="how" id="methode">
+  <div class="container">
+    <div class="how-hd fu">
+      <span class="sec-label">Notre méthode</span>
+      <h2 class="sec-title">Simple. Concret. Sur mesure.</h2>
+      <p class="sec-sub">Trois étapes pour passer de la friction à la fluidité.</p>
+    </div>
+
+    <div class="steps-wrap">
+      <div class="steps">
+        <div class="step fu">
+          <div class="step-num">01</div>
+          <h3>On explore</h3>
+          <p>Un appel de 45 minutes pour comprendre votre contexte, vos blocages, vos ambitions. On identifie ensemble les trois chantiers qui feront le plus de différence.</p>
+        </div>
+        <div class="step fu">
+          <div class="step-num">02</div>
+          <h3>On conçoit</h3>
+          <p>Un plan sur mesure : outils choisis, automatisations définies, agents IA conçus pour votre réalité — et seulement pour elle.</p>
+        </div>
+        <div class="step fu">
+          <div class="step-num">03</div>
+          <h3>On déploie</h3>
+          <p>Mise en place, formation, itérations. Vous êtes accompagné jusqu'à l'autonomie complète. Pas de livrable abandonné dans un tiroir.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     TOOLS
+══════════════════════════════════════════ -->
+<section class="tools-sec" id="outils">
+  <div class="container">
+    <div class="tools-hd fu">
+      <span class="sec-label">Stack no-code &amp; IA</span>
+      <h2 class="sec-title">Les meilleurs outils,<br>dans les bonnes mains.</h2>
+      <p class="sec-sub">Maîtrisés en profondeur. Choisis pour leur impact réel — pas pour suivre la tendance.</p>
+    </div>
+
+    <div class="tools-grid">
+      <div class="tool-card fu">
+        <div class="tool-icon" style="background:rgba(45,156,219,.12);color:var(--blue-l);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h14v8H5zM5 11l7 10 7-10"/></svg>
+        </div>
+        <div class="tool-name">Framer</div>
+        <p class="tool-desc">Le meilleur outil pour créer des sites web et SaaS performants, animés et sur mesure — sans compromis de design.</p>
+      </div>
+
+      <div class="tool-card fu">
+        <div class="tool-icon" style="background:rgba(255,255,255,.07);color:var(--text);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 7h8M8 12h5M8 17h6"/></svg>
+        </div>
+        <div class="tool-name">Notion</div>
+        <p class="tool-desc">Votre cerveau organisationnel. Bases de données, wikis, gestion de projets — tout au même endroit.</p>
+      </div>
+
+      <div class="tool-card fu">
+        <div class="tool-icon" style="background:rgba(124,76,255,.12);color:#A78BFA;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="5" cy="12" r="2"/><circle cx="19" cy="7" r="2"/><circle cx="19" cy="17" r="2"/><path d="M7 12h5M14 7l4 5M14 17l4-5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="tool-name">Make</div>
+        <p class="tool-desc">Des automatisations visuelles puissantes qui connectent tous vos outils sans une ligne de code.</p>
+      </div>
+
+      <div class="tool-card fu">
+        <div class="tool-icon" style="background:rgba(234,88,12,.12);color:#FB923C;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <div class="tool-name">N8N</div>
+        <p class="tool-desc">L'automatisation open-source pour les cas complexes. Souveraineté des données et flexibilité maximale.</p>
+      </div>
+
+      <div class="tool-card fu">
+        <div class="tool-icon" style="background:rgba(39,174,96,.12);color:var(--green-l);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="10" rx="2"/><path d="M7 8V5a5 5 0 0 1 10 0v3M9 13h.01M15 13h.01" stroke-linecap="round"/></svg>
+        </div>
+        <div class="tool-name">Agents IA</div>
+        <p class="tool-desc">Des assistants autonomes qui surveillent, décident et agissent — 24h/24, sans supervision constante.</p>
+      </div>
+
+      <div class="tool-card fu">
+        <div class="tool-icon" style="background:rgba(56,189,248,.12);color:#7DD3FC;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        </div>
+        <div class="tool-name">Claude Code</div>
+        <p class="tool-desc">Pour les projets qui nécessitent un peu plus — développement assisté par IA, sans compromis de qualité.</p>
+      </div>
+    </div>
+  </div>
+  <div class="pixel-transition"
+       data-trigger-id="outils"
+       data-target-id="tarifs"
+       data-from="#07111D"
+       data-to="#0B1929"
+       data-accent="#56B6F7">
+    <div class="pixel-grid"></div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     PRICING
+══════════════════════════════════════════ -->
+<section class="pricing-sec" id="tarifs">
+  <div class="container">
+    <div class="pricing-hd fu">
+      <span class="sec-label">Tarifs</span>
+      <h2 class="sec-title">Un investissement.<br>Un impact mesurable.</h2>
+      <p class="sec-sub">Pas de forfait rigide. Un accompagnement calibré à votre situation et à vos ambitions.</p>
+    </div>
+
+    <div class="pricing-grid">
+      <!-- ASSO -->
+      <div class="price-card fu">
+        <span class="price-lbl g">Associations</span>
+        <div class="price-dual">
+          <div class="price-tier">
+            <span class="price-tier-label">Par mission</span>
+            <div class="price-tier-amount grad-text" style="-webkit-text-fill-color:transparent;">250 €<span class="price-tier-unit" style="-webkit-text-fill-color:var(--text-m);">/mission</span></div>
+          </div>
+          <div class="price-tier">
+            <span class="price-tier-label">Mensuel</span>
+            <div class="price-tier-amount grad-text" style="-webkit-text-fill-color:transparent;">500 €<span class="price-tier-unit" style="-webkit-text-fill-color:var(--text-m);">/mois</span></div>
+          </div>
+        </div>
+        <p class="price-note">À partir de — ajusté selon votre situation et vos besoins.</p>
+        <h3 class="price-name">Impact &amp; Stratégie</h3>
+        <p class="price-desc">Pour les associations qui veulent structurer leur impact et gagner en efficacité opérationnelle.</p>
+        <ul class="price-feats">
+          <li>
+            <span class="chk chk-g"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 6 5 9 10 3"/></svg></span>
+            Conseil stratégique et financier
+          </li>
+          <li>
+            <span class="chk chk-g"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 6 5 9 10 3"/></svg></span>
+            Automatisations des tâches quotidiennes
+          </li>
+          <li>
+            <span class="chk chk-g"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 6 5 9 10 3"/></svg></span>
+            Suivi de dossiers de financement
+          </li>
+          <li>
+            <span class="chk chk-g"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 6 5 9 10 3"/></svg></span>
+            Workspace Notion personnalisé
+          </li>
+          <li>
+            <span class="chk chk-g"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 6 5 9 10 3"/></svg></span>
+            Accès à tous les outils configurés
+          </li>
+        </ul>
+        <a href="mailto:melvin.perrottet@blue-impakt.org" class="btn btn-ghost btn-wide" style="cursor:pointer;">
+          Discutons de votre projet
+        </a>
+      </div>
+
+      <!-- PME -->
+      <div class="price-card featured fu">
+        <span class="price-lbl b">PME &amp; Entreprises</span>
+        <div class="price-dual">
+          <div class="price-tier">
+            <span class="price-tier-label">Par mission</span>
+            <div class="price-tier-amount grad-text" style="-webkit-text-fill-color:transparent;">500 €<span class="price-tier-unit" style="-webkit-text-fill-color:var(--text-m);">/mission</span></div>
+          </div>
+          <div class="price-tier">
+            <span class="price-tier-label">Mensuel</span>
+            <div class="price-tier-amount grad-text" style="-webkit-text-fill-color:transparent;">1 000 €<span class="price-tier-unit" style="-webkit-text-fill-color:var(--text-m);">/mois</span></div>
+          </div>
+        </div>
+        <p class="price-note">À partir de — ajusté selon votre situation et vos besoins.</p>
+        <h3 class="price-name">Automatisation &amp; Croissance</h3>
+        <p class="price-desc">Pour les PME prêtes à transformer leurs processus avec l'IA et le no-code dès le premier mois.</p>
+        <ul class="price-feats">
+          <li>
+            <span class="chk chk-b"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 6 5 9 10 3"/></svg></span>
+            Audit complet des processus
+          </li>
+          <li>
+            <span class="chk chk-b"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 6 5 9 10 3"/></svg></span>
+            Automatisation des processus de ventes
+          </li>
+          <li>
+            <span class="chk chk-b"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 6 5 9 10 3"/></svg></span>
+            Agents IA sur mesure
+          </li>
+          <li>
+            <span class="chk chk-b"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 6 5 9 10 3"/></svg></span>
+            Formation équipe incluse
+          </li>
+          <li>
+            <span class="chk chk-b"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 6 5 9 10 3"/></svg></span>
+            Support prioritaire
+          </li>
+        </ul>
+        <a href="mailto:melvin.perrottet@blue-impakt.org" class="btn btn-primary btn-wide" style="cursor:pointer;">
+          Lancer mon projet
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     ABOUT
+══════════════════════════════════════════ -->
+<section class="about-sec" id="about">
+  <div class="container">
+    <div class="about-in">
+      <div class="about-card fu">
+        <div class="avatar" aria-hidden="true">M</div>
+        <div class="about-name">Melvin Perrottet</div>
+        <div class="about-role">Fondateur · Blue Impakt</div>
+        <p class="about-quote">
+          J'ai créé Blue Impakt pour que les associations environnementales et les entreprises responsables maîtrisent les mêmes outils que les géants de la tech. Des outils puissants, accessibles, et au service d'un impact réel.
+        </p>
+        <div class="stats">
+          <div class="stat">
+            <div class="stat-n">10+</div>
+            <div class="stat-l">Sites web, SaaS, automatisations, agents IA déployés</div>
+          </div>
+          <div class="stat">
+            <div class="stat-n">100%</div>
+            <div class="stat-l">clients rendus autonomes</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-txt fu">
+        <span class="sec-label">À propos</span>
+        <h2>Blue Impakt, c'est le pont entre l'IA et ceux qui changent le monde.</h2>
+        <p>Les outils les plus puissants du moment — Claude, Make, N8N, Notion — sont maîtrisables par n'importe quelle organisation. Pas besoin d'une équipe tech de dix personnes.</p>
+        <p>Blue Impakt, c'est l'expertise pour aller droit au but : identifier ce qui bloque, concevoir ce qui aide, déployer ce qui dure.</p>
+        <p>Notre conviction : l'IA n'est pas une fin en soi. C'est un levier. Pour votre mission, votre équipe, votre impact.</p>
+        <a href="https://cal.eu/melvin-perrottet/45min" data-cal-link="melvin-perrottet/45min" data-cal-origin="https://cal.eu" class="btn btn-primary" style="margin-top:8px;cursor:pointer;">
+          Prendre contact
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     FAQ
+══════════════════════════════════════════ -->
+<section class="faq-sec" id="faq">
+  <div class="container">
+    <div class="faq-hd fu">
+      <span class="sec-label">FAQ</span>
+      <h2 class="sec-title">Les questions qu'on nous pose<br>tout le temps.</h2>
+    </div>
+
+    <div class="faq-list" role="list">
+
+      <div class="faq-item fu" role="listitem">
+        <div class="faq-q" role="button" tabindex="0" aria-expanded="false">
+          Faut-il être technique pour travailler avec vous ?
+          <div class="faq-ic" aria-hidden="true">
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="2" x2="6" y2="10"/><line x1="2" y1="6" x2="10" y2="6"/></svg>
+          </div>
+        </div>
+        <div class="faq-a">
+          <p>Pas du tout. Notre rôle est précisément de rendre l'IA et le no-code accessibles à des équipes non techniques. On configure tout, on forme vos équipes, et on reste disponibles jusqu'à ce que vous soyez complètement autonomes.</p>
+        </div>
+      </div>
+
+      <div class="faq-item fu" role="listitem">
+        <div class="faq-q" role="button" tabindex="0" aria-expanded="false">
+          Combien de temps avant de voir des résultats concrets ?
+          <div class="faq-ic" aria-hidden="true">
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="2" x2="6" y2="10"/><line x1="2" y1="6" x2="10" y2="6"/></svg>
+          </div>
+        </div>
+        <div class="faq-a">
+          <p>La première automatisation est généralement opérationnelle en 2 à 3 semaines. Les gains de temps sont mesurables dès le premier mois. Les transformations plus profondes — agents IA, refonte de processus — prennent 2 à 3 mois.</p>
+        </div>
+      </div>
+
+      <div class="faq-item fu" role="listitem">
+        <div class="faq-q" role="button" tabindex="0" aria-expanded="false">
+          Est-ce adapté aux petites associations avec peu de budget ?
+          <div class="faq-ic" aria-hidden="true">
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="2" x2="6" y2="10"/><line x1="2" y1="6" x2="10" y2="6"/></svg>
+          </div>
+        </div>
+        <div class="faq-a">
+          <p>Oui. Nos tarifs pour les associations sont construits pour être accessibles. Nous proposons aussi des interventions ponctuelles — ateliers, audits — pour les structures avec des contraintes budgétaires fortes. Discutons-en ensemble.</p>
+        </div>
+      </div>
+
+      <div class="faq-item fu" role="listitem">
+        <div class="faq-q" role="button" tabindex="0" aria-expanded="false">
+          Quels outils devons-nous avoir déjà en place ?
+          <div class="faq-ic" aria-hidden="true">
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="2" x2="6" y2="10"/><line x1="2" y1="6" x2="10" y2="6"/></svg>
+          </div>
+        </div>
+        <div class="faq-a">
+          <p>Aucun en particulier. Nous évaluons votre situation de départ et recommandons les outils les plus adaptés à votre contexte — en tenant compte de votre budget, de vos usages actuels et de vos objectifs.</p>
+        </div>
+      </div>
+
+      <div class="faq-item fu" role="listitem">
+        <div class="faq-q" role="button" tabindex="0" aria-expanded="false">
+          Comment se passe le premier appel ?
+          <div class="faq-ic" aria-hidden="true">
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="2" x2="6" y2="10"/><line x1="2" y1="6" x2="10" y2="6"/></svg>
+          </div>
+        </div>
+        <div class="faq-a">
+          <p>Un échange de 45 minutes, sans engagement. On cherche à comprendre votre organisation, vos défis, vos priorités. À la fin, vous repartez avec au moins trois idées concrètes à mettre en œuvre — que vous travailliez avec nous ou non.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     CTA FINAL
+══════════════════════════════════════════ -->
+<section class="cta-sec" id="cta-section">
+  <div class="container">
+    <div class="cta-box fu">
+      <div class="cta-diagram">
+        <svg class="cta-lines-svg" viewBox="0 0 800 260" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <g class="cta-base-group">
+            <path class="cta-base" d="M400 130 Q310 82 178 62" stroke="#2D9CDB" stroke-width="1.5"/>
+            <path class="cta-base" d="M400 130 Q336 192 208 212" stroke="#2D9CDB" stroke-width="1.5"/>
+            <path class="cta-base" d="M400 130 Q490 82 622 62" stroke="#27AE60" stroke-width="1.5"/>
+            <path class="cta-base" d="M400 130 Q464 192 592 212" stroke="#27AE60" stroke-width="1.5"/>
+            <path class="cta-base" d="M178 62 Q193 137 208 212" stroke="#56B6F7" stroke-width="1" opacity="0.45"/>
+            <path class="cta-base" d="M622 62 Q607 137 592 212" stroke="#4BD68A" stroke-width="1" opacity="0.45"/>
+          </g>
+          <path class="cta-pulse-path" d="M400 130 Q310 82 178 62" stroke="#56B6F7" stroke-width="2.5"/>
+          <path class="cta-pulse-path" d="M400 130 Q490 82 622 62" stroke="#4BD68A" stroke-width="2.5"/>
+          <path class="cta-pulse-path" d="M400 130 Q336 192 208 212" stroke="#56B6F7" stroke-width="2.5"/>
+          <path class="cta-pulse-path" d="M400 130 Q464 192 592 212" stroke="#4BD68A" stroke-width="2.5"/>
+          <circle cx="400" cy="130" r="7" fill="#2D9CDB"/>
+          <circle cx="178" cy="62" r="5" fill="#56B6F7"/>
+          <circle cx="208" cy="212" r="5" fill="#56B6F7"/>
+          <circle cx="622" cy="62" r="5" fill="#4BD68A"/>
+          <circle cx="592" cy="212" r="5" fill="#4BD68A"/>
+          <text class="cta-cap" x="400" y="154" text-anchor="middle" fill="#EDF2F7" font-size="12" font-weight="600">Blue Impakt</text>
+          <text class="cta-cap" x="152" y="52" text-anchor="end" fill="#56B6F7" font-size="11">Association</text>
+          <text class="cta-cap" x="182" y="232" text-anchor="end" fill="#56B6F7" font-size="11">PME</text>
+          <text class="cta-cap" x="648" y="52" text-anchor="start" fill="#4BD68A" font-size="11">IA</text>
+          <text class="cta-cap" x="618" y="232" text-anchor="start" fill="#4BD68A" font-size="11">No-Code</text>
+        </svg>
+      </div>
+      <h2>Prêt à libérer le potentiel<br>de votre organisation ?</h2>
+      <p>Un appel de 45 minutes. Zéro engagement. Beaucoup d'idées.</p>
+      <div class="cta-btns">
+        <a href="https://cal.eu/melvin-perrottet/45min" data-cal-link="melvin-perrottet/45min" data-cal-origin="https://cal.eu" class="btn btn-primary" style="font-size:16px;padding:16px 36px;cursor:pointer;">
+          Réserver un appel découverte
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="mailto:melvin.perrottet@blue-impakt.org" class="btn btn-ghost" style="font-size:16px;padding:16px 36px;cursor:pointer;">
+          Envoyer un message
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-in">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo">
+          <div class="logo-sq">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" fill="#fff"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div>
+          Blue Impakt
+        </a>
+        <p>L'IA au service de l'environnement et de l'humain. Accompagnement stratégique, automatisations et agents IA pour associations et PME.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#accompagnements">Pour les associations</a></li>
+          <li><a href="#accompagnements">Pour les PME</a></li>
+          <li><a href="#methode">Notre méthode</a></li>
+          <li><a href="#outils">Outils</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:melvin.perrottet@blue-impakt.org">melvin.perrottet@blue-impakt.org</a></li>
+          <li><a href="#tarifs">Tarifs</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#about">À propos</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-btm">
+      <span>© 2026 Blue Impakt — Tous droits réservés</span>
+      <a href="mailto:melvin.perrottet@blue-impakt.org" style="color:var(--text-m);transition:color .2s;">melvin.perrottet@blue-impakt.org</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════════════════════════════════════
+     JAVASCRIPT
+══════════════════════════════════════════ -->
+<script>
+(function() {
+  'use strict';
+
+  /* ── Sticky nav ── */
+  var nav = document.getElementById('nav');
+  window.addEventListener('scroll', function() {
+    nav.classList.toggle('stuck', window.scrollY > 60);
+  }, { passive: true });
+
+  /* ── Mobile menu ── */
+  var ham = document.getElementById('hamburger');
+  var menu = document.getElementById('mobile-menu');
+  var close = document.getElementById('mobile-close');
+
+  function openMenu() {
+    menu.classList.add('open');
+    ham.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMenu() {
+    menu.classList.remove('open');
+    ham.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+  ham.addEventListener('click', openMenu);
+  close.addEventListener('click', closeMenu);
+  menu.querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', closeMenu);
+  });
+
+  /* ── FAQ accordion ── */
+  document.querySelectorAll('.faq-q').forEach(function(q) {
+    q.addEventListener('click', function() {
+      var item = q.closest('.faq-item');
+      var wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(function(i) {
+        i.classList.remove('open');
+        i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+      });
+      if (!wasOpen) {
+        item.classList.add('open');
+        q.setAttribute('aria-expanded', 'true');
+      }
+    });
+    /* keyboard support */
+    q.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        q.click();
+      }
+    });
+  });
+
+  /* ── Scroll-reveal ── */
+  var motionOk = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (motionOk && 'IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('vis');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.fu').forEach(function(el) { io.observe(el); });
+  } else {
+    document.querySelectorAll('.fu').forEach(function(el) { el.classList.add('vis'); });
+  }
+
+  /* smooth scroll handled by Lenis anchors:true */
+
+})();
+</script>
+
+<!-- Cal.eu popup embed -->
+<script type="text/javascript">
+(function(C,A,L){let p=function(a,ar){a.q.push(ar)};let d=C.document;C.Cal=C.Cal||function(){let cal=C.Cal;let ar=arguments;if(!cal.loaded){cal.ns={};cal.q=cal.q||[];d.head.appendChild(d.createElement("script")).src=A;cal.loaded=true}if(ar[0]===L){const api=function(){p(api,arguments)};const namespace=ar[1];api.q=api.q||[];typeof namespace==="string"?(cal.ns[namespace]=api)&&p(api,ar):p(cal,ar);return}p(cal,ar)};})(window,"https://cal.eu/embed/embed.js","init");
+Cal("init",{origin:"https://cal.eu"});
+Cal("ui",{"hideEventTypeDetails":false,"layout":"month_view"});
+</script>
+
+<!-- ─── GSAP + ScrollTrigger + Lenis ─── -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.23/dist/lenis.min.js"></script>
+<script>
+(function () {
+  if (!window.gsap || !window.Lenis) return;
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.ticker.lagSmoothing(0);
+  const lenis = new Lenis({ autoRaf: false, anchors: true, allowNestedScroll: true });
+  lenis.on('scroll', ScrollTrigger.update);
+  gsap.ticker.add(function (time) { lenis.raf(time * 1000); });
+  window.lenis = lenis;
+})();
+</script>
+
+<!-- ─── Canvas hero (réseau circulaire Blue Impakt) ─── -->
+<script>
+(() => {
+  const PAGE_BG = "#07111D";
+  const BASE_COLOR = "#56B6F7";
+
+  const CFG = {
+    radiusFactor: 0.43, radiusFactorDesktop: 0.30,
+    countDesktop: 130, countMobile: 110,
+    dotMin: 2.0, dotMax: 3.3, lineWidth: 1.0,
+    windAmpPx: 52, windFreq: 0.16, windPhaseDrift: 0.06,
+    stiffness: 12.0, damping: 4.8, maxBendPx: 300, midBoost: 1.95,
+    mouseRadius: 155, impulseForce: 3900, impulseFalloff: 1.7,
+    globalRotateSpeed: 0.055, flowSpeed: 0.2, flowWidth: 0.3,
+    flowBaseAlpha: 0.14, flowPeakAlpha: 0.58,
+    labelPad: 10, labelOffsetMin: 26, labelOffsetMax: 40, labelClamp: 12,
+    labelMinGapPx: 44, labelEdgePad: 14, labelClearDotPx: 8,
+    labelNudgeStepPx: 3, labelNudgeMaxIters: 64,
+    labelBatchSizeDesktop: 5, labelBatchSizeMobile: 3,
+    labelInDur: 0.45, labelOutDur: 0.55,
+    labelShowHoldMin: 1.0, labelShowHoldMax: 2.0,
+    labelInStaggerMin: 0.14, labelInStaggerMax: 0.42,
+    labelOutStaggerMin: 0.12, labelOutStaggerMax: 0.38,
+    labelBatchGap: 0.25, resizeFullMinPx: 48, resizeFullMinRatio: 0.06,
+    labelFontBreakpoints: [
+      { minWidth: 0, px: 9 }, { minWidth: 480, px: 10 },
+      { minWidth: 768, px: 11 }, { minWidth: 1024, px: 12 },
+      { minWidth: 1280, px: 14 }, { minWidth: 1536, px: 14 },
+    ],
+  };
+
+  const TOKENS = [
+    "AUTOMATISATION...", "IMPACT...", "NO-CODE...", "IA...",
+    "MAKE...", "N8N...", "NOTION...", "AGENT IA...",
+    "WORKFLOW...", "STRATÉGIE...", "DÉPLOIEMENT...", "FORMATION...",
+    "FRAMER...", "OPTIMISATION...", "INTÉGRATION...", "ANALYSE...",
+  ];
+
+  const wrap = document.getElementById("strings-wrap");
+  const canvas = document.getElementById("strings-canvas");
+  if (!wrap || !canvas) return;
+
+  const ctx = canvas.getContext("2d", { alpha: false });
+  let w = 1, h = 1, cx = 0, cy = 0, R = 1, dpr = 1;
+  let raf = 0, lastTs = performance.now(), rotation = 0;
+  let isInViewport = true, isPageVisible = document.visibilityState !== "hidden";
+  let io = null, nodes = [], labels = [], batchEndAt = 0;
+  let resizeRaf = 0, lastW = 0, lastH = 0, lastIsMobile = null;
+
+  const mouse = { x: -9999, y: -9999, active: false, vx: 0, vy: 0, px: -9999, py: -9999 };
+  const enablePointerFx = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  const isTouchLike = !enablePointerFx;
+  const mqDesktopRing = window.matchMedia("(min-width: 991px)");
+  const mqMobile = window.matchMedia("(max-width: 767px)");
+
+  function isMobile() { return mqMobile.matches; }
+  function ringFactor() { return mqDesktopRing.matches ? CFG.radiusFactorDesktop : CFG.radiusFactor; }
+
+  function labelFontPx() {
+    const width = wrap.clientWidth;
+    let px = CFG.labelFontBreakpoints[0].px;
+    for (const step of CFG.labelFontBreakpoints) { if (width >= step.minWidth) px = step.px; }
+    return px;
+  }
+
+  function textBounds(text, x, y, align) {
+    const m = ctx.measureText(text), fh = labelFontPx(), tw = m.width;
+    const ascent = m.actualBoundingBoxAscent ?? fh * 0.72;
+    const descent = m.actualBoundingBoxDescent ?? fh * 0.28;
+    const left = align === "left" ? x : x - tw;
+    const right = align === "left" ? x + tw : x;
+    return { left, right, top: y - ascent, bottom: y + descent };
+  }
+
+  function circleIntersectsRect(px, py, pr, b) {
+    const cx2 = Math.max(b.left, Math.min(px, b.right));
+    const cy2 = Math.max(b.top, Math.min(py, b.bottom));
+    return (px - cx2) ** 2 + (py - cy2) ** 2 < pr * pr;
+  }
+
+  function clampLabelDrawXY(text, x, y, nx) {
+    const align = nx >= 0 ? "left" : "right";
+    const padX = CFG.labelClamp, fh = labelFontPx();
+    const padY = Math.max(CFG.labelClamp, fh * 0.65);
+    const m = ctx.measureText(text), tw = m.width;
+    let tx = x, ty = y;
+    if (align === "left") {
+      if (tx < padX) tx = padX;
+      if (tx + tw > w - padX) tx = w - padX - tw;
+    } else {
+      if (tx > w - padX) tx = w - padX;
+      if (tx - tw < padX) tx = padX + tw;
+    }
+    const ascent = m.actualBoundingBoxAscent ?? fh * 0.72;
+    const descent = m.actualBoundingBoxDescent ?? fh * 0.28;
+    if (ty - ascent < padY) ty = padY + ascent;
+    if (ty + descent > h - padY) ty = h - padY - descent;
+    return { x: tx, y: ty, align };
+  }
+
+  function placeLabelClearDot(text, x0, y0, nx, ny, ex, ey, dotR) {
+    const rr = dotR + CFG.labelClearDotPx;
+    let x = x0, y = y0;
+    for (let k = 0; k < CFG.labelNudgeMaxIters; k++) {
+      const placed = clampLabelDrawXY(text, x, y, nx);
+      if (!circleIntersectsRect(ex, ey, rr, textBounds(text, placed.x, placed.y, placed.align))) return placed;
+      x += nx * CFG.labelNudgeStepPx;
+      y += ny * CFG.labelNudgeStepPx;
+    }
+    return clampLabelDrawXY(text, x, y, nx);
+  }
+
+  function labelRadialBase() {
+    return Math.max(22 + CFG.labelPad, CFG.dotMax + CFG.labelClearDotPx + labelFontPx() * 0.85);
+  }
+
+  function hash(n) { const x = Math.sin(n * 127.1) * 43758.5453123; return x - Math.floor(x); }
+  function rand(min, max) { return min + Math.random() * (max - min); }
+  function shuffle(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = (Math.random() * (i + 1)) | 0;
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+  }
+
+  function resize() {
+    w = Math.max(1, wrap.clientWidth); h = Math.max(1, wrap.clientHeight);
+    cx = w * 0.5; cy = h * 0.5; R = Math.min(w, h) * ringFactor();
+    dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+    canvas.width = Math.floor(w * dpr); canvas.height = Math.floor(h * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+
+  function buildNodes() {
+    const count = isMobile() ? CFG.countMobile : CFG.countDesktop;
+    nodes = Array.from({ length: count }, (_, i) => {
+      const seed = i * 19.37;
+      return {
+        baseAngle: (i / count) * Math.PI * 2,
+        dotR: CFG.dotMin + hash(seed + 9.9) * (CFG.dotMax - CFG.dotMin),
+        nx: 0, ny: 0, bend: 0, vel: 0,
+        phase: hash(seed + 1.1) * Math.PI * 2,
+        freqJ: 0.65 + hash(seed + 2.7) * 0.7,
+        ampJ: 0.75 + hash(seed + 4.8) * 0.8,
+      };
+    });
+  }
+
+  function endpointForIndex(i) {
+    const a = nodes[i].baseAngle + rotation;
+    return { a, x: cx + Math.cos(a) * R, y: cy + Math.sin(a) * R };
+  }
+
+  function pointLineDistanceWithT(px, py, x1, y1, x2, y2) {
+    const vx = x2 - x1, vy = y2 - y1, wx = px - x1, wy = py - y1;
+    const c2 = vx * vx + vy * vy || 1;
+    let t = Math.max(0, Math.min(1, (wx * vx + wy * vy) / c2));
+    return { d: Math.hypot(px - (x1 + t * vx), py - (y1 + t * vy)), t };
+  }
+
+  function updatePointerFromClient(clientX, clientY) {
+    const r = canvas.getBoundingClientRect();
+    if (clientX < r.left || clientX > r.right || clientY < r.top || clientY > r.bottom) {
+      mouse.active = false; mouse.vx = mouse.vy = 0; return;
+    }
+    const nx = (clientX - r.left) * (w / r.width);
+    const ny = (clientY - r.top) * (h / r.height);
+    mouse.vx = nx - mouse.px; mouse.vy = ny - mouse.py;
+    mouse.px = nx; mouse.py = ny; mouse.x = nx; mouse.y = ny; mouse.active = true;
+  }
+
+  function pickLabelText(used) {
+    const pool = TOKENS.filter(t => !used.has(t));
+    const src = pool.length ? pool : TOKENS;
+    return src[(Math.random() * src.length) | 0];
+  }
+
+  function canPlaceLabel(x, y, chosen) {
+    return chosen.every(c => Math.hypot(x - c.x, y - c.y) >= CFG.labelMinGapPx);
+  }
+
+  function buildLabelBatch(nowSec) {
+    const batchSize = isMobile() ? CFG.labelBatchSizeMobile : CFG.labelBatchSizeDesktop;
+    const chosen = [], usedNode = new Set(), usedText = new Set();
+    const r0 = labelRadialBase() + CFG.labelOffsetMin * 0.35;
+    let tries = 0;
+
+    while (chosen.length < batchSize && tries < 1600) {
+      tries++;
+      const nodeIndex = (Math.random() * nodes.length) | 0;
+      if (usedNode.has(nodeIndex)) continue;
+      const ep = endpointForIndex(nodeIndex);
+      const nx = Math.cos(ep.a), ny = Math.sin(ep.a);
+      let x = ep.x + nx * (rand(r0, r0 + (CFG.labelOffsetMax - CFG.labelOffsetMin)) + CFG.labelPad);
+      let y = ep.y + ny * (rand(CFG.labelOffsetMin, CFG.labelOffsetMax) + CFG.labelPad);
+      if (Math.abs(nx) < 0.35) x += (nx >= 0 ? 1 : -1) * 10;
+      y += rand(-10, 10);
+      x = Math.max(CFG.labelEdgePad, Math.min(w - CFG.labelEdgePad, x));
+      y = Math.max(CFG.labelEdgePad, Math.min(h - CFG.labelEdgePad, y));
+      if (!canPlaceLabel(x, y, chosen)) continue;
+      const text = pickLabelText(usedText);
+      chosen.push({ nodeIndex, text, x, y });
+      usedNode.add(nodeIndex); usedText.add(text);
+    }
+
+    while (chosen.length < batchSize) {
+      const nodeIndex = (Math.random() * nodes.length) | 0;
+      const ep = endpointForIndex(nodeIndex);
+      const nx = Math.cos(ep.a), ny = Math.sin(ep.a);
+      let x = ep.x + nx * (rand(r0, r0 + 24) + CFG.labelPad);
+      let y = ep.y + ny * (rand(CFG.labelOffsetMin, CFG.labelOffsetMax) + CFG.labelPad);
+      x = Math.max(CFG.labelEdgePad, Math.min(w - CFG.labelEdgePad, x));
+      y = Math.max(CFG.labelEdgePad, Math.min(h - CFG.labelEdgePad, y));
+      chosen.push({ nodeIndex, text: pickLabelText(usedText), x, y });
+      usedText.add(chosen[chosen.length - 1].text);
+    }
+
+    const inOrder = shuffle([...Array(batchSize).keys()]);
+    const outOrder = shuffle([...Array(batchSize).keys()]);
+    const inDelay = new Array(batchSize).fill(0);
+    const outDelay = new Array(batchSize).fill(0);
+    let accIn = 0;
+    for (const idx of inOrder) { inDelay[idx] = accIn; accIn += rand(CFG.labelInStaggerMin, CFG.labelInStaggerMax); }
+    let accOut = accIn + rand(CFG.labelShowHoldMin, CFG.labelShowHoldMax);
+    for (const idx of outOrder) { outDelay[idx] = accOut; accOut += rand(CFG.labelOutStaggerMin, CFG.labelOutStaggerMax); }
+
+    labels = chosen.map((c, i) => ({
+      ...c,
+      inStart: nowSec + inDelay[i], inEnd: nowSec + inDelay[i] + CFG.labelInDur,
+      outStart: nowSec + outDelay[i], outEnd: nowSec + outDelay[i] + CFG.labelOutDur,
+    }));
+    batchEndAt = Math.max(...labels.map(l => l.outEnd)) + CFG.labelBatchGap;
+  }
+
+  function labelAlpha(t, lb) {
+    if (t < lb.inStart) return 0;
+    if (t < lb.inEnd) return (t - lb.inStart) / Math.max(0.0001, CFG.labelInDur);
+    if (t < lb.outStart) return 1;
+    if (t < lb.outEnd) return 1 - (t - lb.outStart) / Math.max(0.0001, CFG.labelOutDur);
+    return 0;
+  }
+
+  function pulseAlpha(u, phase, width, base, peak) {
+    const d = Math.min(Math.abs(u - phase), 1 - Math.abs(u - phase));
+    const s = Math.max(0, 1 - d / width); const sm = s * s * (3 - 2 * s);
+    return base + (peak - base) * sm;
+  }
+
+  function stopLoop() { if (raf) { cancelAnimationFrame(raf); raf = 0; } }
+  function startLoop() { if (!raf && isInViewport && isPageVisible) { lastTs = performance.now(); raf = requestAnimationFrame(draw); } }
+  function syncLoopState() { if (isInViewport && isPageVisible) startLoop(); else stopLoop(); }
+
+  function draw(ts) {
+    const dt = Math.min(0.033, (ts - lastTs) / 1000);
+    lastTs = ts;
+    const t = ts * 0.001;
+    const flowPhase = (t * CFG.flowSpeed) % 1;
+    rotation += CFG.globalRotateSpeed * dt;
+
+    ctx.globalCompositeOperation = "source-over";
+    ctx.globalAlpha = 1;
+    ctx.fillStyle = PAGE_BG;
+    ctx.fillRect(0, 0, w, h);
+
+    const drift = t * CFG.windPhaseDrift;
+    ctx.lineWidth = CFG.lineWidth;
+    ctx.lineCap = "round";
+    ctx.lineJoin = "round";
+
+    for (let i = 0; i < nodes.length; i++) {
+      const n = nodes[i];
+      const a = n.baseAngle + rotation;
+      const ex = cx + Math.cos(a) * R, ey = cy + Math.sin(a) * R;
+      const dx = ex - cx, dy = ey - cy, len = Math.hypot(dx, dy) || 1;
+      n.nx = -dy / len; n.ny = dx / len;
+
+      const baseBend = Math.sin(t * CFG.windFreq * n.freqJ + n.phase + drift) * (CFG.windAmpPx * n.ampJ);
+
+      if (enablePointerFx && mouse.active) {
+        const hit = pointLineDistanceWithT(mouse.x, mouse.y, cx, cy, ex, ey);
+        if (hit.d < CFG.mouseRadius) {
+          const f = 1 - hit.d / CFG.mouseRadius;
+          const falloff = Math.pow(f, CFG.impulseFalloff);
+          const side = Math.sign((mouse.x - cx) * dy - (mouse.y - cy) * dx) || 1;
+          const speedGain = Math.min(2.2, 0.55 + Math.hypot(mouse.vx, mouse.vy) * 0.085);
+          n.vel += side * falloff * Math.sin(Math.PI * hit.t) * CFG.impulseForce * speedGain * dt;
+        }
+      }
+
+      const acc = -CFG.stiffness * (n.bend - baseBend) - CFG.damping * n.vel;
+      n.vel += acc * dt;
+      n.bend = Math.max(-CFG.maxBendPx, Math.min(CFG.maxBendPx, n.bend + n.vel * dt));
+
+      const mx = (cx + ex) * 0.5, my = (cy + ey) * 0.5;
+      const cpx = mx + n.nx * n.bend * CFG.midBoost;
+      const cpy = my + n.ny * n.bend * CFG.midBoost;
+
+      const g = ctx.createLinearGradient(cx, cy, ex, ey);
+      for (let si = 0; si <= 5; si++) {
+        const u = si / 5;
+        const ap = pulseAlpha(u, flowPhase, CFG.flowWidth, CFG.flowBaseAlpha, CFG.flowPeakAlpha);
+        g.addColorStop(u, `rgba(86,182,247,${ap.toFixed(4)})`);
+      }
+      ctx.strokeStyle = g;
+      ctx.beginPath(); ctx.moveTo(cx, cy);
+      ctx.quadraticCurveTo(cpx, cpy, ex, ey);
+      ctx.stroke();
+    }
+
+    ctx.fillStyle = BASE_COLOR;
+    for (let i = 0; i < nodes.length; i++) {
+      const a = nodes[i].baseAngle + rotation;
+      ctx.beginPath();
+      ctx.arc(cx + Math.cos(a) * R, cy + Math.sin(a) * R, nodes[i].dotR, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    if (!labels.length || t >= batchEndAt) buildLabelBatch(t);
+
+    ctx.font = `${labelFontPx()}px "Fragment Mono", ui-monospace, monospace`;
+    ctx.textBaseline = "middle";
+    ctx.fillStyle = BASE_COLOR;
+    const radBase = labelRadialBase();
+
+    for (const lb of labels) {
+      const a = labelAlpha(t, lb);
+      if (a <= 0.001) continue;
+      const ep = endpointForIndex(lb.nodeIndex);
+      const nx = Math.cos(ep.a), ny = Math.sin(ep.a);
+      let x = Math.max(CFG.labelClamp, Math.min(w - CFG.labelClamp, ep.x + nx * radBase + (Math.abs(nx) < 0.35 ? (nx >= 0 ? 10 : -10) : 0)));
+      let y = Math.max(CFG.labelClamp, Math.min(h - CFG.labelClamp, ep.y + ny * radBase));
+      const placed = placeLabelClearDot(lb.text, x, y, nx, ny, ep.x, ep.y, nodes[lb.nodeIndex].dotR);
+      ctx.textAlign = placed.align;
+      ctx.globalAlpha = a * 0.95;
+      ctx.fillText(lb.text, placed.x, placed.y);
+      ctx.globalAlpha = 1;
+    }
+
+    ctx.fillStyle = BASE_COLOR;
+    ctx.beginPath(); ctx.arc(cx, cy, 2.2, 0, Math.PI * 2); ctx.fill();
+
+    raf = (isInViewport && isPageVisible) ? requestAnimationFrame(draw) : 0;
+  }
+
+  function start() {
+    stopLoop(); resize(); buildNodes(); labels = []; batchEndAt = 0;
+    lastIsMobile = isMobile(); lastW = w; lastH = h; syncLoopState();
+  }
+
+  function resizeSoft() {
+    resize();
+    const m = isMobile();
+    if (lastIsMobile !== null && m !== lastIsMobile) { buildNodes(); labels = []; batchEndAt = 0; }
+    lastIsMobile = m; lastW = w; lastH = h; syncLoopState();
+  }
+
+  function scheduleStart() {
+    if (resizeRaf) cancelAnimationFrame(resizeRaf);
+    resizeRaf = requestAnimationFrame(() => { resizeRaf = 0; start(); });
+  }
+
+  function smartResize() {
+    const nextW = Math.max(1, wrap.clientWidth), nextH = Math.max(1, wrap.clientHeight);
+    if (!lastW || !lastH) { scheduleStart(); return; }
+    const dw = Math.abs(nextW - lastW), dh = Math.abs(nextH - lastH);
+    if (!isTouchLike) {
+      if (dw >= CFG.resizeFullMinPx || dh >= CFG.resizeFullMinPx ||
+          dw / Math.max(1, lastW) >= CFG.resizeFullMinRatio || dh / Math.max(1, lastH) >= CFG.resizeFullMinRatio) scheduleStart();
+      else if (dw >= 1 || dh >= 1) resizeSoft();
+      return;
+    }
+    if (dw >= 2) { scheduleStart(); return; }
+    if (dh >= Math.max(80, lastH * 0.12)) scheduleStart();
+  }
+
+  if (enablePointerFx) {
+    window.addEventListener("mousemove", e => updatePointerFromClient(e.clientX, e.clientY));
+    window.addEventListener("mouseleave", () => { mouse.active = false; mouse.vx = mouse.vy = 0; });
+    window.addEventListener("blur", () => { mouse.active = false; mouse.vx = mouse.vy = 0; });
+  }
+
+  mqDesktopRing.addEventListener("change", resizeSoft);
+  mqMobile.addEventListener("change", resizeSoft);
+  new ResizeObserver(smartResize).observe(wrap);
+  window.addEventListener("resize", smartResize, { passive: true });
+  if (window.visualViewport) window.visualViewport.addEventListener("resize", smartResize, { passive: true });
+
+  if ("IntersectionObserver" in window) {
+    io = new IntersectionObserver(entries => {
+      isInViewport = !!(entries[0] && entries[0].isIntersecting);
+      syncLoopState();
+    }, { threshold: [0, 0.01, 0.05, 0.1, 0.25, 0.5] });
+    io.observe(wrap);
+  }
+
+  document.addEventListener("visibilitychange", () => { isPageVisible = document.visibilityState !== "hidden"; syncLoopState(); });
+
+  // Defer first start until after browser layout so wrap.clientWidth is correct
+  // Use setTimeout(0) instead of requestAnimationFrame: rAF doesn't fire in hidden/backgrounded contexts
+  // but layout is already done by the time this script runs, so setTimeout(0) is equivalent
+  setTimeout(start, 0);
+})();
+</script>
+
+<!-- ─── Pixel-dissolve transitions ─── -->
+<script>
+(function () {
+  if (window.__biPixelInit) return;
+  window.__biPixelInit = true;
+
+  var COLS = 25, ROWS = 6, REVEAL_RATIO = 0.5;
+  var built = false, instances = [];
+
+  function seededRandom(seed) {
+    var t = seed % 2147483647;
+    if (t <= 0) t += 2147483646;
+    return function () { t = (t * 16807) % 2147483647; return (t - 1) / 2147483646; };
+  }
+
+  function shuffle(arr, rnd) {
+    var a = arr.slice();
+    for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(rnd() * (i + 1)); var tmp = a[i]; a[i] = a[j]; a[j] = tmp; }
+    return a;
+  }
+
+  function buildPattern(rnd) {
+    var pattern = [];
+    for (var r = 0; r < ROWS; r++) {
+      var row = [];
+      for (var c = 0; c < COLS; c++) {
+        var type = null;
+        if (r >= ROWS - 2) { type = 1; }
+        else {
+          var appear = r === 0 ? 0.34 : r === 1 ? 0.5 : 0.7;
+          if (rnd() < appear) { var p = rnd(); type = p < 0.55 ? 1 : p < 0.82 ? 2 : 3; }
+        }
+        row.push(type);
+      }
+      pattern.push(row);
+    }
+    return pattern;
+  }
+
+  function clamp01(v) { return Math.min(1, Math.max(0, v)); }
+
+  function progressToState(pRaw, revealOrder, blackOrder, state) {
+    var p = clamp01(pRaw), r = clamp01(REVEAL_RATIO);
+    state.revealCount = Math.floor(clamp01(r > 0 ? p / r : p) * revealOrder.length);
+    if (p <= r) { state.blackCount = 0; state.solid = false; return; }
+    var pb = clamp01((p - r) / (1 - r));
+    state.blackCount = Math.floor(pb * blackOrder.length);
+    state.solid = state.solid ? pb >= 0.985 : pb >= 0.997;
+  }
+
+  function sizeGrid(grid, wrap, from) {
+    var cw = wrap.clientWidth || (wrap.parentElement && wrap.parentElement.clientWidth) || window.innerWidth;
+    cw = Math.round(cw);
+    var draw = Math.max(18, Math.ceil(cw / COLS));
+    var gridW = draw * COLS, gridH = draw * ROWS;
+    grid.style.gridTemplateColumns = 'repeat(' + COLS + ',' + draw + 'px)';
+    grid.style.gridTemplateRows = 'repeat(' + ROWS + ',' + draw + 'px)';
+    grid.style.width = gridW + 'px';
+    grid.style.height = gridH + 'px';
+    grid.style.marginLeft = Math.min(0, Math.round((cw - gridW) / 2)) + 'px';
+    grid.style.background = from;
+    wrap.style.height = gridH + 'px';
+  }
+
+  function buildTransition(wrap, idx) {
+    var from = wrap.dataset.from || '#07111D';
+    var to = wrap.dataset.to || '#0B1929';
+    var accent = wrap.dataset.accent || '#2D9CDB';
+    var parent = wrap.parentElement;
+    if (parent && getComputedStyle(parent).position === 'static') parent.style.position = 'relative';
+    wrap.style.setProperty('--px-solid', to);
+
+    var triggerEl = wrap.dataset.triggerId ? document.getElementById(wrap.dataset.triggerId) : null;
+    var targetEl = wrap.dataset.targetId ? document.getElementById(wrap.dataset.targetId) : null;
+    var grid = wrap.querySelector('.pixel-grid');
+    if (!grid || !triggerEl || !targetEl) return null;
+
+    var pattern = buildPattern(seededRandom(100 + idx));
+    grid.innerHTML = '';
+    wrap.classList.remove('is-solid');
+
+    var allPixels = [], active = [];
+    for (var r = 0; r < ROWS; r++) {
+      for (var c = 0; c < COLS; c++) {
+        var t = pattern[r][c], el = document.createElement('div');
+        el.className = 'pixel';
+        el.dataset.base = t === 1 ? to : t === 2 ? from : (t === 3 ? accent : from);
+        if (t) active.push(el);
+        el.style.backgroundColor = from;
+        el.__c = from;
+        allPixels.push(el);
+        grid.appendChild(el);
+      }
+    }
+
+    sizeGrid(grid, wrap, from);
+
+    var revealOrder = shuffle(active, seededRandom(200 + idx));
+    var blackOrder = shuffle(active, seededRandom(300 + idx));
+    var state = { revealCount: 0, blackCount: 0, solid: false };
+
+    function render() {
+      if (state.solid) { wrap.classList.add('is-solid'); return; }
+      wrap.classList.remove('is-solid');
+      var revealSet = new Set(revealOrder.slice(0, state.revealCount));
+      var blackSet = new Set(blackOrder.slice(0, state.blackCount));
+      for (var i = 0; i < allPixels.length; i++) {
+        var pixel = allPixels[i];
+        var color = revealSet.has(pixel) ? (blackSet.has(pixel) ? to : pixel.dataset.base) : from;
+        if (pixel.__c !== color) { pixel.style.backgroundColor = color; pixel.__c = color; }
+      }
+    }
+
+    function setProgress(p) { progressToState(p, revealOrder, blackOrder, state); render(); }
+
+    var st = ScrollTrigger.create({
+      id: 'bi-px-' + idx,
+      trigger: triggerEl, endTrigger: targetEl,
+      start: 'bottom bottom', end: 'top top',
+      invalidateOnRefresh: true,
+      onUpdate: function (self) { setProgress(self.progress); },
+      onLeave: function () { state.solid = true; render(); },
+      onEnterBack: function (self) { state.solid = false; setProgress(self.progress); },
+      onLeaveBack: function () { state.solid = false; setProgress(0); },
+    });
+
+    setProgress(st.progress);
+    return { wrap, grid, from, st, resize: function () { sizeGrid(grid, wrap, from); }, sync: function () { setProgress(st.progress); } };
+  }
+
+  function build() {
+    if (built) return true;
+    if (!window.gsap || !window.ScrollTrigger) return false;
+    gsap.registerPlugin(ScrollTrigger);
+    if (ScrollTrigger.config) ScrollTrigger.config({ ignoreMobileResize: true });
+    var wraps = Array.from(document.querySelectorAll('.pixel-transition'));
+    if (!wraps.length) return false;
+    instances = wraps.map(function (wrap, idx) { return buildTransition(wrap, idx); }).filter(Boolean);
+    if (!instances.length) return false;
+    built = true;
+    ScrollTrigger.refresh();
+    requestAnimationFrame(function () { instances.forEach(function (inst) { inst.sync(); }); });
+    return true;
+  }
+
+  (function poll(n) {
+    if (build()) return;
+    if (n > 400) return;
+    setTimeout(function () { poll(n + 1); }, 30);
+  })(0);
+
+  window.addEventListener('resize', function () {
+    if (!built) return;
+    instances.forEach(function (inst) { inst.resize(); });
+    if (window.lenis && typeof window.lenis.resize === 'function') window.lenis.resize();
+    ScrollTrigger.refresh();
+    setTimeout(function () { instances.forEach(function (inst) { inst.sync(); }); }, 100);
+  }, { passive: true });
+})();
+</script>
+
+<!-- ─── Line-reveal (nav hover) ─── -->
+<script>
+(function () {
+  if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+  document.querySelectorAll('[data-line-reveal]').forEach(function (el) {
+    var text = el.textContent.trim();
+    el.innerHTML = '<span class="line-inner" data-text="' + text.replace(/"/g, '&quot;') + '">' + text + '</span>';
+  });
+})();
+</script>
+
+<!-- ─── CTA SVG animation ─── -->
+<script>
+(function () {
+  var maxWait = 6000, step = 50, waited = 0;
+
+  function pathLen(el) { try { return el.getTotalLength(); } catch (e) { return 0; } }
+
+  function startPulseLoops(root) {
+    var pulsePaths = gsap.utils.toArray(root.querySelectorAll('.cta-pulse-path'));
+    pulsePaths.forEach(function (p, i) {
+      var len = pathLen(p);
+      if (!len) return;
+      var seg = Math.max(48, len * 0.045);
+      p.style.strokeDasharray = seg + ' ' + len;
+      p.style.strokeDashoffset = '0';
+      gsap.set(p, { opacity: 1 });
+      gsap.to(p, { strokeDashoffset: -(len + seg), duration: 3.4 + i * 0.15, ease: 'none', repeat: -1 });
+    });
+  }
+
+  function showCaptions(root) {
+    gsap.to(root.querySelectorAll('.cta-cap'), { opacity: 1, duration: 0.55, stagger: 0.1, ease: 'power2.out' });
+  }
+
+  function drawLinesThenLoop(root, instant) {
+    var basePaths = gsap.utils.toArray(root.querySelectorAll('.cta-base'));
+    if (instant) {
+      basePaths.forEach(function (p) { gsap.set(p, { clearProps: 'strokeDasharray,strokeDashoffset' }); });
+      showCaptions(root); startPulseLoops(root); return;
+    }
+    basePaths.forEach(function (p) {
+      var len = pathLen(p); if (!len) return;
+      p.style.strokeDasharray = String(len); p.style.strokeDashoffset = String(len);
+    });
+    var tl = gsap.timeline({ onComplete: function () {
+      basePaths.forEach(function (p) { p.style.strokeDasharray = ''; p.style.strokeDashoffset = ''; });
+      showCaptions(root); startPulseLoops(root);
+    }});
+    basePaths.forEach(function (p, i) {
+      var len = pathLen(p); if (!len) return;
+      tl.to(p, { strokeDashoffset: 0, duration: 2.75, ease: 'power2.inOut' }, i * 0.18);
+    });
+  }
+
+  function init() {
+    if (!window.gsap || !window.ScrollTrigger) {
+      waited += step; if (waited < maxWait) setTimeout(init, step); return;
+    }
+    gsap.registerPlugin(ScrollTrigger);
+    var root = document.querySelector('#cta-section');
+    if (!root || root.dataset.ctaInit === 'true') return;
+    root.dataset.ctaInit = 'true';
+    var instant = (window.matchMedia('(prefers-reduced-motion: reduce)').matches) ||
+                  (window.matchMedia('(max-width: 767px)').matches);
+    var started = false;
+    function runOnce() { if (started) return; started = true; drawLinesThenLoop(root, instant); }
+    ScrollTrigger.create({ trigger: root, start: 'top 85%', once: true, onEnter: runOnce });
+    if (root.getBoundingClientRect().top < window.innerHeight * 0.85) runOnce();
+    ScrollTrigger.refresh();
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+</script>
+
+<!-- ─── Horizontal carousel (outils, desktop) ─── -->
+<script>
+(function () {
+  var mq = window.matchMedia('(min-width: 992px)');
+  if (!mq.matches) return;
+
+  var sec = document.getElementById('outils');
+  var grid = sec && sec.querySelector('.tools-grid');
+  if (!sec || !grid) return;
+
+  var cards = Array.prototype.slice.call(grid.querySelectorAll('.tool-card'));
+  var OFFSETS = [0, -70, 40, 100, -50, 0];
+
+  var currentX = 0, targetX = 0, rafId = 0;
+  var maxXVal = 0;
+
+  function calcMax() {
+    // Undo current transform to get natural left offset
+    var left = grid.getBoundingClientRect().left + currentX;
+    maxXVal = Math.max(0, left + grid.scrollWidth - sec.offsetWidth);
+  }
+
+  function scrollProgress() {
+    var r = sec.getBoundingClientRect();
+    var vh = window.innerHeight;
+    return Math.max(0, Math.min(1, (vh - r.top) / (vh + sec.offsetHeight)));
+  }
+
+  function tick() {
+    rafId = 0;
+    currentX += (targetX - currentX) * 0.14;
+    if (Math.abs(targetX - currentX) < 0.5) currentX = targetX;
+    else rafId = requestAnimationFrame(tick);
+    grid.style.transform = 'translate3d(' + (-currentX).toFixed(2) + 'px,0,0)';
+  }
+
+  function onScroll() {
+    targetX = scrollProgress() * maxXVal;
+    if (!rafId) rafId = requestAnimationFrame(tick);
+  }
+
+  function onResize() { calcMax(); onScroll(); }
+
+  // Activate carousel
+  grid.classList.add('carousel-active');
+  cards.forEach(function (c, i) { c.style.marginTop = (OFFSETS[i] || 0) + 'px'; });
+
+  // Defer first measurement so layout has settled
+  setTimeout(function () {
+    calcMax();
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onResize, { passive: true });
+  }, 0);
+
+  // Clean up on mobile breakpoint
+  mq.addEventListener('change', function () {
+    if (!mq.matches) {
+      grid.classList.remove('carousel-active');
+      cards.forEach(function (c) { c.style.marginTop = ''; });
+      grid.style.transform = '';
+      currentX = 0; targetX = 0;
+      if (rafId) { cancelAnimationFrame(rafId); rafId = 0; }
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
