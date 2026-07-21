@@ -1,0 +1,15 @@
+﻿{
+    "version":  "0.0.1",
+    "configurations":  [
+                           {
+                               "port":  3300,
+                               "runtimeExecutable":  "python",
+                               "name":  "Blue Impakt Site",
+                               "runtimeArgs":  [
+                                                   "-m",
+                                                   "http.server",
+                                                   "3300"
+                                               ]
+                           }
+                       ]
+}

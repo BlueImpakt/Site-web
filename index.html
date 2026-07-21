@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blue Impakt — L'IA au service de l'environnement et de l'humain</title>
-  <meta name="description" content="Blue Impakt accompagne les associations environnementales et les PME avec l'IA et le no-code. Automatisations, agents IA, conseil stratégique.">
-  <meta property="og:title" content="Blue Impakt — L'IA au service de l'environnement et de l'humain">
-  <meta property="og:description" content="Accompagnement IA et no-code pour associations environnementales et PME. Automatisations, agents, conseil stratégique.">
+  <title>Blue Impakt, l'IA au service de l'environnement et de l'humain</title>
+  <meta name="description" content="Blue Impakt accompagne les associations environnementales et les entreprises à impact avec l'IA et le no-code. Automatisations, agents IA, développement web, conseil stratégique.">
+  <meta property="og:title" content="Blue Impakt, l'IA au service de l'environnement et de l'humain">
+  <meta property="og:description" content="Accompagnement IA et no-code pour associations environnementales et entreprises à impact. Automatisations, agents IA, développement web, conseil stratégique.">
   <meta property="og:type" content="website">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -103,11 +103,11 @@
     section { padding: clamp(28px, 4vh, 56px) 0; position: relative; }
 
     /* Sections plein-écran — chaque section = 1 viewport sur desktop */
-    .problem, .offers, .tools-sec, .pricing-sec, .about-sec, .cta-sec {
+    .cta-sec {
       height: 100vh;
       height: 100dvh;
       min-height: 480px;
-      overflow: hidden;
+      overflow: visible;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -246,7 +246,7 @@
       text-align: center;
       padding: clamp(72px, 10vh, 100px) 0 clamp(20px, 2.5vh, 40px);
       position: relative;
-      overflow: hidden;
+      overflow: visible;
     }
     /* dot-grid remplacé par le canvas hero */
     .hero::before { display: none; }
@@ -260,7 +260,21 @@
     .orb-1 { width: 560px; height: 560px; background: var(--blue); top: -120px; left: -140px; }
     .orb-2 { width: 440px; height: 440px; background: var(--green); bottom: -80px; right: -100px; }
 
-    .hero-content { position: relative; max-width: 860px; z-index: 1; }
+    .hero-content { position: relative; max-width: 1100px; z-index: 1; }
+
+    .hero-split {
+      display: flex;
+      align-items: center;
+      gap: clamp(28px, 5vw, 64px);
+      text-align: left;
+      margin-bottom: clamp(22px, 3vh, 44px);
+    }
+    .hero-left, .hero-right { flex: 1; min-width: 0; }
+    .hero-left { transform: translateX(-3cm); }
+    .hero-right { transform: translateX(3cm); }
+    .hero-sub-group { text-align: justify; color: #fff; transform: translate(2cm, 0cm); }
+    .hero-sub-group .hero-sub + .hero-sub { margin-top: 14px; }
+    .tools-row { transform: translateY(1.8cm); }
 
     .hero-badge {
       display: inline-flex;
@@ -295,19 +309,12 @@
     }
     .hero-sub {
       font-size: clamp(14px, 1.8vw, 18px);
-      color: var(--text-m);
-      max-width: 580px;
-      margin: 0 auto clamp(18px, 2.5vh, 30px);
+      max-width: 360px;
+      margin: 0;
       font-weight: 300;
+      line-height: 1.65;
     }
-    .hero-ctas {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin-bottom: clamp(22px, 3vh, 44px);
-    }
+    .reveal-words .w { opacity: .12; }
 
     .tools-row-label {
       font-size: 11px;
@@ -342,7 +349,7 @@
     /* ─────────────────────────────────────────
        PROBLEM
     ───────────────────────────────────────── */
-    .problem { background: linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%); }
+    .problem { background: #0f2740; }
     .problem-hd { text-align: center; margin-bottom: clamp(20px, 3.5vh, 36px); }
     .problem-hd .sec-sub { margin: 0 auto; }
 
@@ -405,7 +412,7 @@
     /* ─────────────────────────────────────────
        OFFERS
     ───────────────────────────────────────── */
-    .offers { background: var(--bg); }
+    .offers { background: #0f2740; }
     .offers-hd { text-align: center; margin-bottom: clamp(20px, 3.5vh, 36px); }
     .offers-hd .sec-sub { margin: 0 auto; }
 
@@ -450,7 +457,7 @@
     /* ─────────────────────────────────────────
        HOW IT WORKS
     ───────────────────────────────────────── */
-    .how { background: linear-gradient(180deg, var(--bg-2) 0%, var(--bg) 100%); }
+    .how { background: #0f2740; }
     .how-hd { text-align: center; margin-bottom: 36px; }
     .how-hd .sec-sub { margin: 0 auto; }
 
@@ -491,6 +498,14 @@
 
     /* connector line */
     .steps-wrap { position: relative; }
+    .step-line-1 {
+      position: absolute;
+      top: 72px;
+      left: 4px;
+      width: calc(33.3% - 8px);
+      height: 1px;
+      background: linear-gradient(90deg, rgba(39,174,96,0), rgba(39,174,96,.3));
+    }
     .steps-wrap::before {
       content: '';
       position: absolute;
@@ -550,7 +565,7 @@
     /* ─────────────────────────────────────────
        PRICING
     ───────────────────────────────────────── */
-    .pricing-sec { background: linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%); }
+    .pricing-sec { background: var(--bg); }
     .pricing-hd { text-align: center; margin-bottom: clamp(20px, 3.5vh, 36px); }
     .pricing-hd .sec-sub { margin: 0 auto; }
 
@@ -632,6 +647,12 @@
       font-style: italic;
       text-align: center;
       margin: -18px 0 24px;
+      transform: translateY(0.5cm);
+    }
+    .price-card:not(.featured) .price-tier-amount.grad-text {
+      background: var(--green-l);
+      -webkit-background-clip: text;
+      background-clip: text;
     }
     .price-name { font-size: 20px; margin-bottom: 8px; }
     .price-desc { font-size: 13px; color: var(--text-m); margin-bottom: clamp(14px, 2vh, 32px); line-height: 1.6; }
@@ -641,12 +662,12 @@
     /* ─────────────────────────────────────────
        ABOUT
     ───────────────────────────────────────── */
-    .about-sec { background: var(--bg); }
+    .about-sec { background: #0f2740; }
     .about-in {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 40px;
-      align-items: center;
+      align-items: stretch;
     }
     .about-card {
       background: var(--bg-card);
@@ -655,6 +676,8 @@
       padding: clamp(20px, 3vh, 32px);
       position: relative;
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
     }
     .avatar {
       width: 64px; height: 64px;
@@ -665,7 +688,9 @@
       font-size: 26px;
       color: #fff;
       margin-bottom: clamp(12px, 1.8vh, 20px);
+      overflow: hidden;
     }
+    .avatar img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
     .about-name { font-family: 'DM Serif Display', serif; font-size: 20px; margin-bottom: 4px; }
     .about-role { font-size: 13px; color: var(--text-m); margin-bottom: clamp(12px, 1.8vh, 20px); }
     .about-quote { font-size: 14px; color: var(--text-m); line-height: 1.7; font-style: italic; }
@@ -673,7 +698,8 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 12px;
-      margin-top: clamp(14px, 2vh, 28px);
+      margin-top: auto;
+      padding-top: clamp(14px, 2vh, 28px);
     }
     .stat {
       background: rgba(255,255,255,.03);
@@ -697,7 +723,7 @@
     /* ─────────────────────────────────────────
        FAQ
     ───────────────────────────────────────── */
-    .faq-sec { background: linear-gradient(180deg, var(--bg-2) 0%, var(--bg) 100%); }
+    .faq-sec { background: #0f2740; }
     .faq-hd { text-align: center; margin-bottom: clamp(20px, 3.5vh, 36px); }
 
     .faq-list { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 6px; }
@@ -836,6 +862,7 @@
       display: block;
       width: 100%;
       height: 100%;
+      transform: translateY(0.7cm);
     }
 
     /* ─────────────────────────────────────────
@@ -860,6 +887,12 @@
     .pixel-grid {
       display: grid;
       overflow: hidden;
+    }
+    .transition_cubes {
+      position: relative;
+      height: 0;
+      overflow: visible;
+      margin-top: 21em;
     }
     .pixel {
       /* no CSS transition — JS updates directly */
@@ -954,11 +987,14 @@
       .steps { grid-template-columns: 1fr; }
       .steps-wrap::before, .steps-wrap::after { display: none; }
       .tools-grid { grid-template-columns: 1fr 1fr; }
+      .hero-split { flex-direction: column; text-align: center; }
+      .hero-sub-group { transform: none; }
+      .hero-right .hero-sub { max-width: none; margin: 0 auto; }
       section { padding: clamp(24px, 3.5vh, 48px) 0; }
       .cta-box { padding: clamp(24px, 4vh, 48px) 24px; }
       .footer-in { gap: 28px; }
       /* Libère les sections de leur hauteur fixe sur mobile / tablette */
-      .problem, .offers, .tools-sec, .pricing-sec, .about-sec, .cta-sec {
+      .offers, .tools-sec, .pricing-sec, .about-sec, .cta-sec {
         height: auto;
         min-height: 0;
         overflow: visible;
@@ -970,8 +1006,6 @@
       .container { padding: 0 20px; }
       .hero h1 { font-size: 42px; }
       .tools-grid { grid-template-columns: 1fr; }
-      .hero-ctas { flex-direction: column; width: 100%; }
-      .hero-ctas .btn { width: 100%; }
       .cta-btns { flex-direction: column; }
       .cta-btns .btn { width: 100%; }
       .offer-card, .price-card { padding: 36px 28px; }
@@ -1014,7 +1048,6 @@
 
     /* ─── Horizontal carousel (outils, desktop) ─── */
     @media (min-width: 992px) {
-      .tools-sec { overflow: hidden; }
       .tools-grid.carousel-active {
         display: flex;
         flex-wrap: nowrap;
@@ -1038,7 +1071,7 @@
 <nav id="nav">
   <div class="container">
     <div class="nav-in">
-      <a href="#" class="nav-logo" aria-label="Blue Impakt — Accueil">
+      <a href="#" class="nav-logo" aria-label="Blue Impakt, accueil">
         <div class="logo-sq">
           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
@@ -1052,7 +1085,7 @@
         <li><a href="#tarifs" data-line-reveal="">Tarifs</a></li>
         <li><a href="#about" data-line-reveal="">À propos</a></li>
       </ul>
-      <a href="https://cal.eu/melvin-perrottet/45min" data-cal-link="melvin-perrottet/45min" data-cal-origin="https://cal.eu" class="btn btn-primary nav-btn">Réserver un appel</a>
+      <a href="https://cal.eu/melvin-perrottet/30min" data-cal-link="melvin-perrottet/30min" data-cal-origin="https://cal.eu" class="btn btn-primary nav-btn">Réserver un appel</a>
       <button class="hamburger" id="hamburger" aria-label="Ouvrir le menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -1067,7 +1100,7 @@
   <a href="#methode">Méthode</a>
   <a href="#tarifs">Tarifs</a>
   <a href="#about">À propos</a>
-  <a href="https://cal.eu/melvin-perrottet/45min" data-cal-link="melvin-perrottet/45min" data-cal-origin="https://cal.eu" class="btn btn-primary" style="margin-top:8px;">Réserver un appel</a>
+  <a href="https://cal.eu/melvin-perrottet/30min" data-cal-link="melvin-perrottet/30min" data-cal-origin="https://cal.eu" class="btn btn-primary" style="margin-top:8px;">Réserver un appel</a>
 </div>
 
 <!-- ══════════════════════════════════════════
@@ -1084,26 +1117,25 @@
         L'IA au service de l'environnement et de l'humain
       </div>
 
-      <h1>
-        L'IA qui résout.<br>
-        <span class="grad-text">L'impact qui dure.</span>
-      </h1>
-
-      <p class="hero-sub">
-        Nous aidons les associations environnementales et les PME à automatiser l'essentiel — pour se concentrer sur ce qui compte vraiment.
-      </p>
-
-      <div class="hero-ctas">
-        <a href="https://cal.eu/melvin-perrottet/45min" data-cal-link="melvin-perrottet/45min" data-cal-origin="https://cal.eu" class="btn btn-primary">
-          Réserver un appel découverte
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
-        <a href="#accompagnements" class="btn btn-ghost">
-          Voir les accompagnements
-        </a>
+      <div class="hero-split">
+        <div class="hero-left">
+          <h1>
+            L'IA qui résout.<br>
+            <span class="grad-text">L'impact qui dure.</span>
+          </h1>
+        </div>
+        <div class="hero-right">
+          <div class="hero-sub-group reveal-words" data-hero-reveal>
+            <p class="hero-sub">
+              <span class="pre-revealed">Blue Impakt</span> <span class="rest">aide les associations environnementales et entreprises à impact à automatiser l'essentiel, pour se concentrer sur ce qui compte vraiment.</span>
+            </p>
+            <p class="hero-sub">
+              Gagnez du temps et de l'argent grâce à des systèmes d'automatisation et des agents IA sur mesure.
+            </p>
+          </div>
+        </div>
       </div>
 
-      <p class="tools-row-label">Outils maîtrisés</p>
       <div class="tools-row">
         <!-- Framer -->
         <div class="tool-pill">
@@ -1138,20 +1170,22 @@
       </div>
     </div>
   </div>
-  <div class="pixel-transition"
-       data-trigger-id="hero"
-       data-target-id="probleme"
-       data-from="#07111D"
-       data-to="#0B1929"
-       data-accent="#2D9CDB">
-    <div class="pixel-grid"></div>
-  </div>
 </section>
 
 <!-- ══════════════════════════════════════════
      PROBLEM
 ══════════════════════════════════════════ -->
 <section class="problem" id="probleme">
+  <div class="transition_cubes">
+    <div class="pixel-transition"
+         data-trigger-id="hero"
+         data-target-id="probleme"
+         data-from="#07111D"
+         data-to="#0f2740"
+         data-accent="#2D9CDB">
+      <div class="pixel-grid"></div>
+    </div>
+  </div>
   <div class="container">
     <div class="problem-hd fu">
       <span class="sec-label">Vous n'êtes pas seul</span>
@@ -1182,7 +1216,7 @@
           <!-- Building -->
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M3 9h6M3 15h6M15 9h6M15 15h6"/></svg>
         </div>
-        <h3>Pour les PME</h3>
+        <h3>Pour les entreprises à impact</h3>
         <ul class="prob-list">
           <li><div class="x-dot" aria-hidden="true">×</div>Vos processus manuels freinent votre croissance</li>
           <li><div class="x-dot" aria-hidden="true">×</div>L'IA existe mais vous ne savez pas par où commencer</li>
@@ -1203,7 +1237,7 @@
     <div class="offers-hd fu">
       <span class="sec-label">Accompagnements</span>
       <h2 class="sec-title">Deux cibles.<br>Un seul objectif : votre impact.</h2>
-      <p class="sec-sub">Un accompagnement sur mesure, pensé pour votre réalité — associative ou entrepreneuriale.</p>
+      <p class="sec-sub">Un accompagnement sur mesure, pensé pour votre réalité, associative ou entrepreneuriale.</p>
     </div>
 
     <div class="offers-grid">
@@ -1212,7 +1246,7 @@
         <span class="tag tag-green">Associations environnementales</span>
         <h3>Du conseil à l'action</h3>
         <p class="offer-desc">
-          Stratégie, financement, gestion de projets et IA — un accompagnement complet pour les organisations qui veulent avoir plus d'impact avec moins de friction.
+          Stratégie, financement, gestion de projets, IA. Un accompagnement complet pour les organisations qui veulent avoir plus d'impact avec moins de friction.
         </p>
         <ul class="svc-list">
           <li>
@@ -1237,21 +1271,21 @@
           </li>
           <li>
             <span class="chk chk-g"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 6 5 9 10 3"/></svg></span>
-            Agents IA pour le suivi d'indicateurs d'impact
+            Développement web et outils sur mesure
           </li>
         </ul>
-        <a href="https://cal.eu/melvin-perrottet/45min" data-cal-link="melvin-perrottet/45min" data-cal-origin="https://cal.eu" class="btn btn-ghost btn-wide" style="cursor:pointer;">
+        <a href="https://cal.eu/melvin-perrottet/30min" data-cal-link="melvin-perrottet/30min" data-cal-origin="https://cal.eu" class="btn btn-ghost btn-wide" style="cursor:pointer;">
           Discutons de votre projet
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
       </div>
 
-      <!-- PME -->
+      <!-- Entreprises -->
       <div class="offer-card b fu">
-        <span class="tag tag-blue">PME &amp; Entreprises</span>
+        <span class="tag tag-blue">Entreprises</span>
         <h3>L'IA qui travaille à votre place</h3>
         <p class="offer-desc">
-          Des automatisations concrètes, des agents IA sur mesure, des outils no-code déployés et adoptés par vos équipes — sans recruter un DSI.
+          Des automatisations concrètes, des agents IA sur mesure, du développement web et SaaS, des outils no-code déployés et adoptés par vos équipes, au service d'une croissance qui a du sens.
         </p>
         <ul class="svc-list">
           <li>
@@ -1279,20 +1313,12 @@
             Accompagnement jusqu'à l'autonomie complète
           </li>
         </ul>
-        <a href="https://cal.eu/melvin-perrottet/45min" data-cal-link="melvin-perrottet/45min" data-cal-origin="https://cal.eu" class="btn btn-primary btn-wide" style="cursor:pointer;">
+        <a href="https://cal.eu/melvin-perrottet/30min" data-cal-link="melvin-perrottet/30min" data-cal-origin="https://cal.eu" class="btn btn-primary btn-wide" style="cursor:pointer;">
           Lancer mon projet
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
       </div>
     </div>
-  </div>
-  <div class="pixel-transition"
-       data-trigger-id="accompagnements"
-       data-target-id="methode"
-       data-from="#07111D"
-       data-to="#0B1929"
-       data-accent="#27AE60">
-    <div class="pixel-grid"></div>
   </div>
 </section>
 
@@ -1308,21 +1334,22 @@
     </div>
 
     <div class="steps-wrap">
+      <div class="step-line-1" aria-hidden="true"></div>
       <div class="steps">
         <div class="step fu">
           <div class="step-num">01</div>
           <h3>On explore</h3>
-          <p>Un appel de 45 minutes pour comprendre votre contexte, vos blocages, vos ambitions. On identifie ensemble les trois chantiers qui feront le plus de différence.</p>
+          <p>Un appel de 30 minutes pour comprendre votre contexte, vos blocages, vos ambitions, et identifier les chantiers prioritaires.</p>
         </div>
         <div class="step fu">
           <div class="step-num">02</div>
           <h3>On conçoit</h3>
-          <p>Un plan sur mesure : outils choisis, automatisations définies, agents IA conçus pour votre réalité — et seulement pour elle.</p>
+          <p>Un plan sur mesure : outils choisis, automatisations définies, agents IA conçus pour votre réalité.</p>
         </div>
         <div class="step fu">
           <div class="step-num">03</div>
           <h3>On déploie</h3>
-          <p>Mise en place, formation, itérations. Vous êtes accompagné jusqu'à l'autonomie complète. Pas de livrable abandonné dans un tiroir.</p>
+          <p>Mise en place, formation, itérations. Vous êtes accompagné jusqu'à l'autonomie complète.</p>
         </div>
       </div>
     </div>
@@ -1333,11 +1360,21 @@
      TOOLS
 ══════════════════════════════════════════ -->
 <section class="tools-sec" id="outils">
+  <div class="transition_cubes">
+    <div class="pixel-transition"
+         data-trigger-id="methode"
+         data-target-id="outils"
+         data-from="#0f2740"
+         data-to="#07111D"
+         data-accent="#2D9CDB">
+      <div class="pixel-grid"></div>
+    </div>
+  </div>
   <div class="container">
     <div class="tools-hd fu">
       <span class="sec-label">Stack no-code &amp; IA</span>
       <h2 class="sec-title">Les meilleurs outils,<br>dans les bonnes mains.</h2>
-      <p class="sec-sub">Maîtrisés en profondeur. Choisis pour leur impact réel — pas pour suivre la tendance.</p>
+      <p class="sec-sub">Maîtrisés en profondeur. Choisis pour leur impact réel.</p>
     </div>
 
     <div class="tools-grid">
@@ -1346,7 +1383,7 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h14v8H5zM5 11l7 10 7-10"/></svg>
         </div>
         <div class="tool-name">Framer</div>
-        <p class="tool-desc">Le meilleur outil pour créer des sites web et SaaS performants, animés et sur mesure — sans compromis de design.</p>
+        <p class="tool-desc">Le meilleur outil pour créer des sites web et SaaS performants, animés et sur mesure, sans compromis de design.</p>
       </div>
 
       <div class="tool-card fu">
@@ -1354,7 +1391,7 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 7h8M8 12h5M8 17h6"/></svg>
         </div>
         <div class="tool-name">Notion</div>
-        <p class="tool-desc">Votre cerveau organisationnel. Bases de données, wikis, gestion de projets — tout au même endroit.</p>
+        <p class="tool-desc">Votre cerveau organisationnel. Bases de données, wikis, gestion de projets, tout au même endroit.</p>
       </div>
 
       <div class="tool-card fu">
@@ -1378,7 +1415,7 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="10" rx="2"/><path d="M7 8V5a5 5 0 0 1 10 0v3M9 13h.01M15 13h.01" stroke-linecap="round"/></svg>
         </div>
         <div class="tool-name">Agents IA</div>
-        <p class="tool-desc">Des assistants autonomes qui surveillent, décident et agissent — 24h/24, sans supervision constante.</p>
+        <p class="tool-desc">Des assistants autonomes qui surveillent, décident et agissent 24h/24, sans supervision constante.</p>
       </div>
 
       <div class="tool-card fu">
@@ -1386,17 +1423,9 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
         </div>
         <div class="tool-name">Claude Code</div>
-        <p class="tool-desc">Pour les projets qui nécessitent un peu plus — développement assisté par IA, sans compromis de qualité.</p>
+        <p class="tool-desc">Pour les projets qui nécessitent un peu plus de développement assisté par IA, sans compromis de qualité.</p>
       </div>
     </div>
-  </div>
-  <div class="pixel-transition"
-       data-trigger-id="outils"
-       data-target-id="tarifs"
-       data-from="#07111D"
-       data-to="#0B1929"
-       data-accent="#56B6F7">
-    <div class="pixel-grid"></div>
   </div>
 </section>
 
@@ -1408,7 +1437,7 @@
     <div class="pricing-hd fu">
       <span class="sec-label">Tarifs</span>
       <h2 class="sec-title">Un investissement.<br>Un impact mesurable.</h2>
-      <p class="sec-sub">Pas de forfait rigide. Un accompagnement calibré à votre situation et à vos ambitions.</p>
+      <p class="sec-sub">Un accompagnement calibré à votre situation et à vos ambitions.</p>
     </div>
 
     <div class="pricing-grid">
@@ -1425,9 +1454,9 @@
             <div class="price-tier-amount grad-text" style="-webkit-text-fill-color:transparent;">500 €<span class="price-tier-unit" style="-webkit-text-fill-color:var(--text-m);">/mois</span></div>
           </div>
         </div>
-        <p class="price-note">À partir de — ajusté selon votre situation et vos besoins.</p>
+        <p class="price-note">Ajusté selon votre situation et vos besoins.</p>
         <h3 class="price-name">Impact &amp; Stratégie</h3>
-        <p class="price-desc">Pour les associations qui veulent structurer leur impact et gagner en efficacité opérationnelle.</p>
+        <p class="price-desc">Pour les associations qui veulent structurer leur impact et gagner en efficacité opérationnelle rapidement.</p>
         <ul class="price-feats">
           <li>
             <span class="chk chk-g"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 6 5 9 10 3"/></svg></span>
@@ -1447,7 +1476,7 @@
           </li>
           <li>
             <span class="chk chk-g"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 6 5 9 10 3"/></svg></span>
-            Accès à tous les outils configurés
+            Support sur tous les outils configurés
           </li>
         </ul>
         <a href="mailto:melvin.perrottet@blue-impakt.org" class="btn btn-ghost btn-wide" style="cursor:pointer;">
@@ -1455,9 +1484,9 @@
         </a>
       </div>
 
-      <!-- PME -->
+      <!-- Entreprises -->
       <div class="price-card featured fu">
-        <span class="price-lbl b">PME &amp; Entreprises</span>
+        <span class="price-lbl b">Entreprises</span>
         <div class="price-dual">
           <div class="price-tier">
             <span class="price-tier-label">Par mission</span>
@@ -1468,9 +1497,9 @@
             <div class="price-tier-amount grad-text" style="-webkit-text-fill-color:transparent;">1 000 €<span class="price-tier-unit" style="-webkit-text-fill-color:var(--text-m);">/mois</span></div>
           </div>
         </div>
-        <p class="price-note">À partir de — ajusté selon votre situation et vos besoins.</p>
+        <p class="price-note">Ajusté selon votre situation et vos besoins.</p>
         <h3 class="price-name">Automatisation &amp; Croissance</h3>
-        <p class="price-desc">Pour les PME prêtes à transformer leurs processus avec l'IA et le no-code dès le premier mois.</p>
+        <p class="price-desc">Pour les entreprises à impact prêtes à transformer leurs processus avec l'IA et le no-code dès le premier mois.</p>
         <ul class="price-feats">
           <li>
             <span class="chk chk-b"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 6 5 9 10 3"/></svg></span>
@@ -1490,7 +1519,7 @@
           </li>
           <li>
             <span class="chk chk-b"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 6 5 9 10 3"/></svg></span>
-            Support prioritaire
+            Dev web, SaaS et maintenance
           </li>
         </ul>
         <a href="mailto:melvin.perrottet@blue-impakt.org" class="btn btn-primary btn-wide" style="cursor:pointer;">
@@ -1505,14 +1534,24 @@
      ABOUT
 ══════════════════════════════════════════ -->
 <section class="about-sec" id="about">
+  <div class="transition_cubes">
+    <div class="pixel-transition"
+         data-trigger-id="tarifs"
+         data-target-id="about"
+         data-from="#07111D"
+         data-to="#0f2740"
+         data-accent="#56B6F7">
+      <div class="pixel-grid"></div>
+    </div>
+  </div>
   <div class="container">
     <div class="about-in">
       <div class="about-card fu">
-        <div class="avatar" aria-hidden="true">M</div>
+        <div class="avatar"><img src="images/melvin-perrottet.jpg" alt="Melvin Perrottet"></div>
         <div class="about-name">Melvin Perrottet</div>
         <div class="about-role">Fondateur · Blue Impakt</div>
         <p class="about-quote">
-          J'ai créé Blue Impakt pour que les associations environnementales et les entreprises responsables maîtrisent les mêmes outils que les géants de la tech. Des outils puissants, accessibles, et au service d'un impact réel.
+          Diplômé d'un master en Économie Sociale et Collaborative, j'ai été responsable des partenariats & coordinateur de projets environnementaux dans le monde associatif, avant de me former en profondeur aux outils digitaux d'aujourd'hui. C'est cette triple casquette (à la croisée des sciences sociales, environnementales et numériques) qui m'a poussé à créer Blue Impakt : pour que les associations environnementales et les entreprises responsables maîtrisent les mêmes outils que les géants de la tech. Des outils puissants, accessibles, et au service d'un impact réel.
         </p>
         <div class="stats">
           <div class="stat">
@@ -1521,18 +1560,18 @@
           </div>
           <div class="stat">
             <div class="stat-n">100%</div>
-            <div class="stat-l">clients rendus autonomes</div>
+            <div class="stat-l">des clients rendus autonomes</div>
           </div>
         </div>
       </div>
 
       <div class="about-txt fu">
         <span class="sec-label">À propos</span>
-        <h2>Blue Impakt, c'est le pont entre l'IA et ceux qui changent le monde.</h2>
-        <p>Les outils les plus puissants du moment — Claude, Make, N8N, Notion — sont maîtrisables par n'importe quelle organisation. Pas besoin d'une équipe tech de dix personnes.</p>
-        <p>Blue Impakt, c'est l'expertise pour aller droit au but : identifier ce qui bloque, concevoir ce qui aide, déployer ce qui dure.</p>
-        <p>Notre conviction : l'IA n'est pas une fin en soi. C'est un levier. Pour votre mission, votre équipe, votre impact.</p>
-        <a href="https://cal.eu/melvin-perrottet/45min" data-cal-link="melvin-perrottet/45min" data-cal-origin="https://cal.eu" class="btn btn-primary" style="margin-top:8px;cursor:pointer;">
+        <h2>Blue Impakt, c'est le pont entre l'IA et celles et ceux qui construisent un monde plus juste et plus durable.</h2>
+        <p>Claude, Make, N8N, Notion : les outils les plus puissants du moment ne sont plus réservés aux grandes structures. Que vous soyez une association de terrain ou une entreprise engagée, vous n'avez pas besoin d'une équipe tech pour vous en emparer, juste du bon accompagnement.</p>
+        <p>Notre rôle : aller droit au but. Identifier ce qui vous freine, concevoir ce qui vous aide vraiment, déployer ce qui dure, pour que votre énergie serve votre cause, pas votre logiciel.</p>
+        <p>Notre conviction : l'IA n'est pas une fin en soi, c'est un levier, au service de votre mission, de votre équipe, et d'un impact réel pour la planète et pour les gens.</p>
+        <a href="https://cal.eu/melvin-perrottet/30min" data-cal-link="melvin-perrottet/30min" data-cal-origin="https://cal.eu" class="btn btn-primary" style="margin-top:8px;cursor:pointer;">
           Prendre contact
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
@@ -1573,7 +1612,7 @@
           </div>
         </div>
         <div class="faq-a">
-          <p>La première automatisation est généralement opérationnelle en 2 à 3 semaines. Les gains de temps sont mesurables dès le premier mois. Les transformations plus profondes — agents IA, refonte de processus — prennent 2 à 3 mois.</p>
+          <p>La première automatisation est généralement opérationnelle en 2 à 3 semaines. Les gains de temps sont mesurables dès le premier mois. Les transformations plus profondes (agents IA, refonte de processus) prennent 2 à 3 mois.</p>
         </div>
       </div>
 
@@ -1585,7 +1624,7 @@
           </div>
         </div>
         <div class="faq-a">
-          <p>Oui. Nos tarifs pour les associations sont construits pour être accessibles. Nous proposons aussi des interventions ponctuelles — ateliers, audits — pour les structures avec des contraintes budgétaires fortes. Discutons-en ensemble.</p>
+          <p>Oui. Nos tarifs pour les associations sont construits pour être accessibles. Nous proposons aussi des interventions ponctuelles (ateliers, audits) pour les structures avec des contraintes budgétaires fortes. Discutons-en ensemble.</p>
         </div>
       </div>
 
@@ -1597,7 +1636,7 @@
           </div>
         </div>
         <div class="faq-a">
-          <p>Aucun en particulier. Nous évaluons votre situation de départ et recommandons les outils les plus adaptés à votre contexte — en tenant compte de votre budget, de vos usages actuels et de vos objectifs.</p>
+          <p>Aucun en particulier. Nous évaluons votre situation de départ et recommandons les outils les plus adaptés à votre contexte, en tenant compte de votre budget, de vos usages actuels et de vos objectifs.</p>
         </div>
       </div>
 
@@ -1609,7 +1648,7 @@
           </div>
         </div>
         <div class="faq-a">
-          <p>Un échange de 45 minutes, sans engagement. On cherche à comprendre votre organisation, vos défis, vos priorités. À la fin, vous repartez avec au moins trois idées concrètes à mettre en œuvre — que vous travailliez avec nous ou non.</p>
+          <p>Un échange de 30 minutes, sans engagement. On cherche à comprendre votre organisation, vos défis, vos priorités. À la fin, vous repartez avec au moins trois idées concrètes à mettre en œuvre, que vous travailliez avec nous ou non.</p>
         </div>
       </div>
 
@@ -1644,15 +1683,15 @@
           <circle cx="592" cy="212" r="5" fill="#4BD68A"/>
           <text class="cta-cap" x="400" y="154" text-anchor="middle" fill="#EDF2F7" font-size="12" font-weight="600">Blue Impakt</text>
           <text class="cta-cap" x="152" y="52" text-anchor="end" fill="#56B6F7" font-size="11">Association</text>
-          <text class="cta-cap" x="182" y="232" text-anchor="end" fill="#56B6F7" font-size="11">PME</text>
+          <text class="cta-cap" x="182" y="232" text-anchor="end" fill="#56B6F7" font-size="11">Entreprise</text>
           <text class="cta-cap" x="648" y="52" text-anchor="start" fill="#4BD68A" font-size="11">IA</text>
           <text class="cta-cap" x="618" y="232" text-anchor="start" fill="#4BD68A" font-size="11">No-Code</text>
         </svg>
       </div>
       <h2>Prêt à libérer le potentiel<br>de votre organisation ?</h2>
-      <p>Un appel de 45 minutes. Zéro engagement. Beaucoup d'idées.</p>
+      <p>Un appel de 30 minutes. Zéro engagement. Beaucoup d'idées.</p>
       <div class="cta-btns">
-        <a href="https://cal.eu/melvin-perrottet/45min" data-cal-link="melvin-perrottet/45min" data-cal-origin="https://cal.eu" class="btn btn-primary" style="font-size:16px;padding:16px 36px;cursor:pointer;">
+        <a href="https://cal.eu/melvin-perrottet/30min" data-cal-link="melvin-perrottet/30min" data-cal-origin="https://cal.eu" class="btn btn-primary" style="font-size:16px;padding:16px 36px;cursor:pointer;">
           Réserver un appel découverte
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
@@ -1677,13 +1716,13 @@
           </div>
           Blue Impakt
         </a>
-        <p>L'IA au service de l'environnement et de l'humain. Accompagnement stratégique, automatisations et agents IA pour associations et PME.</p>
+        <p>L'IA au service de l'environnement et de l'humain. Accompagnement stratégique, automatisations et agents IA pour associations et entreprises à impact.</p>
       </div>
       <div class="footer-col">
         <h4>Services</h4>
         <ul>
           <li><a href="#accompagnements">Pour les associations</a></li>
-          <li><a href="#accompagnements">Pour les PME</a></li>
+          <li><a href="#accompagnements">Pour les entreprises</a></li>
           <li><a href="#methode">Notre méthode</a></li>
           <li><a href="#outils">Outils</a></li>
         </ul>
@@ -1699,7 +1738,7 @@
       </div>
     </div>
     <div class="footer-btm">
-      <span>© 2026 Blue Impakt — Tous droits réservés</span>
+      <span>© 2026 Blue Impakt. Tous droits réservés</span>
       <a href="mailto:melvin.perrottet@blue-impakt.org" style="color:var(--text-m);transition:color .2s;">melvin.perrottet@blue-impakt.org</a>
     </div>
   </div>
@@ -1791,18 +1830,127 @@ Cal("ui",{"hideEventTypeDetails":false,"layout":"month_view"});
 </script>
 
 <!-- ─── GSAP + ScrollTrigger + Lenis ─── -->
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/ScrollTrigger.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.23/dist/lenis.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/gsap.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/ScrollTrigger.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.23/dist/lenis.min.js" defer></script>
 <script>
 (function () {
-  if (!window.gsap || !window.Lenis) return;
+  /* Les 3 scripts ci-dessus sont en `defer` (pour ne pas bloquer le rendu
+     initial) : ce script inline, lui, s'exécute immédiatement au parsing —
+     donc gsap/Lenis ne sont pas encore forcément prêts. On attend. */
+  function init() {
+    if (!window.gsap || !window.Lenis || !window.ScrollTrigger) { setTimeout(init, 30); return; }
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.ticker.lagSmoothing(0);
+    const lenis = new Lenis({ autoRaf: false, anchors: true, allowNestedScroll: true });
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add(function (time) { lenis.raf(time * 1000); });
+    window.lenis = lenis;
+  }
+  init();
+})();
+</script>
+
+<!-- ─── Reveal words (mot par mot, piloté par le scroll, section figée) ─── -->
+<script>
+(function initRevealWords() {
+  if (!window.gsap || !window.ScrollTrigger) { setTimeout(initRevealWords, 30); return; }
+
+  function splitWords(el, cls) {
+    const words = el.textContent.trim().split(/\s+/);
+    el.textContent = "";
+    const spans = [];
+    words.forEach((w, i) => {
+      const s = document.createElement("span");
+      s.className = cls;
+      s.textContent = w;
+      if (i) el.append(" ");
+      el.append(s);
+      spans.push(s);
+    });
+    return spans;
+  }
+
+  const group = document.querySelector("[data-hero-reveal]");
+  if (!group) return;
+  const hero = group.closest(".hero") || group;
+
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduceMotion) {
+    group.querySelectorAll(".rest").forEach((el) => { el.style.opacity = 1; });
+    group.querySelectorAll(".hero-sub").forEach((el) => { el.style.opacity = 1; });
+    return;
+  }
+
+  const rest = group.querySelector(".rest");
+  const secondPara = group.querySelectorAll(".hero-sub")[1];
+  const animatedSpans = [
+    ...splitWords(rest, "w"),
+    ...splitWords(secondPara, "w"),
+  ];
+
+  gsap.to(animatedSpans, {
+    opacity: 1, ease: "none", stagger: 0.08, duration: 0.4,
+    scrollTrigger: {
+      trigger: hero,
+      start: "top top",
+      end: "+=100%",
+      scrub: true,
+      pin: true,
+      anticipatePin: 1,
+    }
+  });
+})();
+</script>
+
+<!-- ─── Hero : entrée du badge, du titre et de la barre d'outils ─── -->
+<script>
+(function initHeroEntrance() {
+  if (!window.gsap) { setTimeout(initHeroEntrance, 30); return; }
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  const badge = document.querySelector(".hero-badge");
+  const h1 = document.querySelector(".hero-left h1");
+  const pills = document.querySelectorAll(".tool-pill");
+  if (!badge || !h1) return;
+
+  /* Repos 2cm plus haut (~75.6px à 96dpi) : le badge et le titre glissent
+     depuis un peu plus bas jusqu'à cette position finale décalée. */
+  var REST = -75.6;
+  gsap.set(badge, { opacity: 0, y: REST + 20 });
+  gsap.set(h1, { opacity: 0, y: REST + 28 });
+  gsap.set(pills, { opacity: 0, y: 16 });
+
+  gsap.timeline({ delay: 0.15 })
+    .to(badge, { opacity: 1, y: REST, duration: 0.7, ease: "power2.out" })
+    .to(h1, { opacity: 1, y: REST, duration: 0.8, ease: "power2.out" }, "-=0.45")
+    .to(pills, { opacity: 1, y: 0, duration: 0.6, stagger: 0.06, ease: "power2.out" }, "-=0.35");
+})();
+</script>
+
+<!-- ─── Compteurs animés (stats "À propos") ─── -->
+<script>
+(function initCounters() {
+  if (!window.gsap || !window.ScrollTrigger) { setTimeout(initCounters, 30); return; }
   gsap.registerPlugin(ScrollTrigger);
-  gsap.ticker.lagSmoothing(0);
-  const lenis = new Lenis({ autoRaf: false, anchors: true, allowNestedScroll: true });
-  lenis.on('scroll', ScrollTrigger.update);
-  gsap.ticker.add(function (time) { lenis.raf(time * 1000); });
-  window.lenis = lenis;
+
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  document.querySelectorAll(".stat-n").forEach((el) => {
+    const match = el.textContent.trim().match(/^(\d+)(.*)$/);
+    if (!match) return;
+    const target = parseInt(match[1], 10);
+    const suffix = match[2];
+    if (reduceMotion) return;
+
+    el.textContent = "0" + suffix;
+    const counter = { val: 0 };
+    gsap.to(counter, {
+      val: target, duration: 1.4, ease: "power2.out",
+      scrollTrigger: { trigger: el, start: "top 88%", once: true },
+      onUpdate: function () { el.textContent = Math.round(counter.val) + suffix; }
+    });
+  });
 })();
 </script>
 
@@ -1838,10 +1986,11 @@ Cal("ui",{"hideEventTypeDetails":false,"layout":"month_view"});
   };
 
   const TOKENS = [
-    "AUTOMATISATION...", "IMPACT...", "NO-CODE...", "IA...",
+    "AUTOMATISATION...", "IMPACT...", "NO-CODE...", "IA GENERATIVE...",
     "MAKE...", "N8N...", "NOTION...", "AGENT IA...",
     "WORKFLOW...", "STRATÉGIE...", "DÉPLOIEMENT...", "FORMATION...",
     "FRAMER...", "OPTIMISATION...", "INTÉGRATION...", "ANALYSE...",
+    "DEV WEB...", "SAAS...", "INFÉRENCE...", "LLM...",
   ];
 
   const wrap = document.getElementById("strings-wrap");
@@ -1853,6 +2002,7 @@ Cal("ui",{"hideEventTypeDetails":false,"layout":"month_view"});
   let raf = 0, lastTs = performance.now(), rotation = 0;
   let isInViewport = true, isPageVisible = document.visibilityState !== "hidden";
   let io = null, nodes = [], labels = [], batchEndAt = 0;
+  let prevBatchTexts = new Set();
   let resizeRaf = 0, lastW = 0, lastH = 0, lastIsMobile = null;
 
   const mouse = { x: -9999, y: -9999, active: false, vx: 0, vy: 0, px: -9999, py: -9999 };
@@ -1979,8 +2129,10 @@ Cal("ui",{"hideEventTypeDetails":false,"layout":"month_view"});
   }
 
   function pickLabelText(used) {
-    const pool = TOKENS.filter(t => !used.has(t));
-    const src = pool.length ? pool : TOKENS;
+    const pool = TOKENS.filter(t => !used.has(t) && !prevBatchTexts.has(t));
+    if (pool.length) return pool[(Math.random() * pool.length) | 0];
+    const fallback = TOKENS.filter(t => !used.has(t));
+    const src = fallback.length ? fallback : TOKENS;
     return src[(Math.random() * src.length) | 0];
   }
 
@@ -2023,6 +2175,8 @@ Cal("ui",{"hideEventTypeDetails":false,"layout":"month_view"});
       chosen.push({ nodeIndex, text: pickLabelText(usedText), x, y });
       usedText.add(chosen[chosen.length - 1].text);
     }
+
+    prevBatchTexts = usedText;
 
     const inOrder = shuffle([...Array(batchSize).keys()]);
     const outOrder = shuffle([...Array(batchSize).keys()]);
@@ -2217,7 +2371,7 @@ Cal("ui",{"hideEventTypeDetails":false,"layout":"month_view"});
   if (window.__biPixelInit) return;
   window.__biPixelInit = true;
 
-  var COLS = 25, ROWS = 6, REVEAL_RATIO = 0.5;
+  var COLS = 25, ROWS = 8, REVEAL_RATIO = 0.5;
   var built = false, instances = [];
 
   function seededRandom(seed) {
@@ -2238,11 +2392,11 @@ Cal("ui",{"hideEventTypeDetails":false,"layout":"month_view"});
       var row = [];
       for (var c = 0; c < COLS; c++) {
         var type = null;
-        if (r >= ROWS - 2) { type = 1; }
-        else {
-          var appear = r === 0 ? 0.34 : r === 1 ? 0.5 : 0.7;
-          if (rnd() < appear) { var p = rnd(); type = p < 0.55 ? 1 : p < 0.82 ? 2 : 3; }
-        }
+        /* Les 2 rangées du bas sont pleines (densité 100 %) mais gardent la
+           distribution de couleurs normale, sinon elles seraient uniformément
+           en couleur `to` (= fond de section) donc invisibles. */
+        var appear = r === 0 ? 0.34 : r === 1 ? 0.5 : r >= ROWS - 2 ? 1 : 0.7;
+        if (rnd() < appear) { var p = rnd(); type = p < 0.55 ? 1 : p < 0.82 ? 2 : 3; }
         row.push(type);
       }
       pattern.push(row);
@@ -2273,6 +2427,28 @@ Cal("ui",{"hideEventTypeDetails":false,"layout":"month_view"});
     grid.style.marginLeft = Math.min(0, Math.round((cw - gridW) / 2)) + 'px';
     grid.style.background = 'transparent';
     wrap.style.height = gridH + 'px';
+    /* Fond de la section cible :
+       0→split = couleur section précédente (fromColor, opaque)
+       split→fin = fond naturel CSS de la section (gradient d'origine, via transparence) */
+    var cubes = wrap.parentElement;
+    if (cubes && cubes.classList.contains('transition_cubes')) {
+      var sec = cubes.parentElement;
+      /* 4 rangées dans la section cible, 2 rangées dans la section précédente.
+         On soustrait le padding-top de la section pour que la grille parte du bord extérieur. */
+      var secPT = sec ? (parseFloat(getComputedStyle(sec).paddingTop) || 0) : 0;
+      cubes.style.marginTop = Math.max(0, 4 * draw - secPT) + 'px';
+      var fromColor = wrap.dataset.from || '#07111D';
+      var split = 0;
+      if (sec) {
+        if (!sec.dataset.origBgImage)
+          sec.dataset.origBgImage = getComputedStyle(sec).backgroundImage;
+        var natural = sec.dataset.origBgImage;
+        var overlay = 'linear-gradient(to bottom,' + fromColor + ' ' + split + 'px,transparent ' + split + 'px)';
+        sec.style.backgroundImage = (natural && natural !== 'none')
+          ? overlay + ',' + natural
+          : overlay;
+      }
+    }
   }
 
   function buildTransition(wrap, idx) {
@@ -2461,20 +2637,32 @@ Cal("ui",{"hideEventTypeDetails":false,"layout":"month_view"});
 
   var cards = Array.prototype.slice.call(grid.querySelectorAll('.tool-card'));
   var OFFSETS = [0, -70, 40, 100, -50, 0];
+  var currentX = 0, targetX = 0, rafId = 0, maxXVal = 0;
 
-  var currentX = 0, targetX = 0, rafId = 0;
-  var maxXVal = 0;
+  /* Seule la grille se fige (sticky), pas le titre : le titre défile
+     normalement, puis la grille se bloque en haut du viewport pendant le
+     scroll horizontal. L'espaceur réserve la hauteur nécessaire au défilement,
+     la stickyBox est l'élément réellement figé. */
+  var spacer = document.createElement('div');
+  spacer.style.cssText = 'position:relative;';
+  grid.parentNode.insertBefore(spacer, grid);
+
+  var stickyBox = document.createElement('div');
+  stickyBox.style.cssText = 'position:sticky; top:2cm; overflow:hidden;';
+  spacer.appendChild(stickyBox);
+  stickyBox.appendChild(grid);
 
   function calcMax() {
-    // Undo current transform to get natural left offset
     var left = grid.getBoundingClientRect().left + currentX;
     maxXVal = Math.max(0, left + grid.scrollWidth - sec.offsetWidth);
+    spacer.style.height = (stickyBox.offsetHeight + maxXVal) + 'px';
   }
 
-  function scrollProgress() {
-    var r = sec.getBoundingClientRect();
-    var vh = window.innerHeight;
-    return Math.max(0, Math.min(1, (vh - r.top) / (vh + sec.offsetHeight)));
+  function onScroll() {
+    var spacerTop = spacer.getBoundingClientRect().top;
+    var progress = Math.max(0, Math.min(1, -spacerTop / (maxXVal || 1)));
+    targetX = progress * maxXVal;
+    if (!rafId) rafId = requestAnimationFrame(tick);
   }
 
   function tick() {
@@ -2485,18 +2673,11 @@ Cal("ui",{"hideEventTypeDetails":false,"layout":"month_view"});
     grid.style.transform = 'translate3d(' + (-currentX).toFixed(2) + 'px,0,0)';
   }
 
-  function onScroll() {
-    targetX = scrollProgress() * maxXVal;
-    if (!rafId) rafId = requestAnimationFrame(tick);
-  }
-
   function onResize() { calcMax(); onScroll(); }
 
-  // Activate carousel
   grid.classList.add('carousel-active');
   cards.forEach(function (c, i) { c.style.marginTop = (OFFSETS[i] || 0) + 'px'; });
 
-  // Defer first measurement so layout has settled
   setTimeout(function () {
     calcMax();
     onScroll();
@@ -2504,16 +2685,317 @@ Cal("ui",{"hideEventTypeDetails":false,"layout":"month_view"});
     window.addEventListener('resize', onResize, { passive: true });
   }, 0);
 
-  // Clean up on mobile breakpoint
   mq.addEventListener('change', function () {
     if (!mq.matches) {
       grid.classList.remove('carousel-active');
       cards.forEach(function (c) { c.style.marginTop = ''; });
       grid.style.transform = '';
+      spacer.parentNode.insertBefore(grid, spacer);
+      spacer.parentNode.removeChild(spacer);
       currentX = 0; targetX = 0;
       if (rafId) { cancelAnimationFrame(rafId); rafId = 0; }
     }
   });
+})();
+</script>
+
+<!-- ─── Tracé de scroll continu (section 2 → dernière section) ─── -->
+<script>
+(function () {
+  function build() {
+    if (!window.gsap || !window.ScrollTrigger) return false;
+    var firstSec = document.getElementById('probleme');
+    var lastSec = document.getElementById('cta-section');
+    if (!firstSec || !lastSec) return false;
+
+    var wrap = document.createElement('div');
+    wrap.id = 'scroll-path-wrap';
+    wrap.style.cssText = 'position:absolute; left:0; top:0; width:100%; z-index:25; pointer-events:none; overflow:hidden;';
+    document.body.insertBefore(wrap, firstSec);
+
+    var svgNS = 'http://www.w3.org/2000/svg';
+    var svg = document.createElementNS(svgNS, 'svg');
+    svg.setAttribute('preserveAspectRatio', 'none');
+    svg.style.cssText = 'display:block; width:100%; height:100%;';
+    wrap.appendChild(svg);
+
+    function seededRandom(seed) {
+      var t = seed % 2147483647;
+      if (t <= 0) t += 2147483646;
+      return function () { t = (t * 16807) % 2147483647; return (t - 1) / 2147483646; };
+    }
+
+    var pathA = document.createElementNS(svgNS, 'path');
+    var pathB = document.createElementNS(svgNS, 'path');
+    [pathA, pathB].forEach(function (p) {
+      p.setAttribute('fill', 'none');
+      p.setAttribute('stroke', '#56B6F7');
+      p.setAttribute('stroke-width', '1.3');
+      p.setAttribute('stroke-linecap', 'round');
+      p.setAttribute('stroke-linejoin', 'round');
+      p.setAttribute('vector-effect', 'non-scaling-stroke');
+      p.style.filter = 'drop-shadow(0 0 4px rgba(45,156,219,.8))';
+      svg.appendChild(p);
+    });
+
+    var lengthA = 0, lengthB = 0, st = null;
+    var tableA = [], tableB = []; // [{len, y}] — pour synchroniser le dessin sur la position Y réelle, pas sur la longueur du tracé
+
+    var IX = 12, IY = 10; // marges de sécurité horizontale et verticale autour du texte
+
+    /* Récupère les boîtes de texte/blocs à éviter, en coordonnées internes au
+       wrap. Pour les titres centrés (blocs pleine largeur mais texte étroit)
+       on mesure le vrai rectangle du texte via un Range ; pour les cartes on
+       prend la boîte de l'élément. */
+    function collectObstacles(wrapTop, H) {
+      var out = [];
+      function add(x1, x2, y1, y2) {
+        if (y2 < 0 || y1 > H) return;
+        out.push({ x1: x1 - IX, x2: x2 + IX, y1: y1 - IY, y2: y2 + IY });
+      }
+      // Blocs pleins (cartes, colonnes, listes) : boîte de l'élément.
+      document.querySelectorAll('.prob-card, .offer-card, .price-card, .tool-card, .step, .about-card, .about-txt, .faq-item, .cta-box').forEach(function (el) {
+        var r = el.getBoundingClientRect();
+        if (!r.width) return;
+        add(r.left, r.right, r.top + window.scrollY - wrapTop, r.bottom + window.scrollY - wrapTop);
+      });
+      // Textes centrés (titres, labels, sous-titres) : rectangle serré du texte.
+      document.querySelectorAll('.sec-title, .sec-label, .sec-sub, .pricing-hd .sec-sub').forEach(function (el) {
+        var range = document.createRange();
+        range.selectNodeContents(el);
+        var r = range.getBoundingClientRect();
+        range.detach && range.detach();
+        if (!r.width) return;
+        add(r.left, r.right, r.top + window.scrollY - wrapTop, r.bottom + window.scrollY - wrapTop);
+      });
+      return out;
+    }
+
+    /* Intervalles horizontaux libres à une hauteur Y donnée. */
+    function freeAtY(obstacles, y, W) {
+      var occ = [];
+      for (var i = 0; i < obstacles.length; i++) {
+        var o = obstacles[i];
+        if (y >= o.y1 && y <= o.y2) occ.push([o.x1, o.x2]);
+      }
+      occ.sort(function (a, b) { return a[0] - b[0]; });
+      var lo = W * 0.02, hi = W * 0.98;
+      var free = [], x = lo;
+      for (var j = 0; j < occ.length; j++) {
+        if (occ[j][0] - x > 16) free.push([x, Math.min(occ[j][0], hi)]);
+        x = Math.max(x, occ[j][1]);
+        if (x >= hi) break;
+      }
+      if (x < hi) free.push([x, hi]);
+      return free.filter(function (f) { return f[1] - f[0] > 16; });
+    }
+
+    /* Choisit X : on vise le centre (couloir entre deux blocs) ; si le centre
+       est occupé (titre), on glisse vers l'espace libre le plus proche — donc
+       « à côté / sous les titres, entre les blocs au milieu ». */
+    function pickX(free, desired, prevX) {
+      var inset = 10;
+      if (!free.length) return desired;
+      var best = null, bestCost = Infinity;
+      for (var i = 0; i < free.length; i++) {
+        var f = free[i], lo = f[0] + inset, hi = f[1] - inset;
+        if (hi < lo) { lo = hi = (f[0] + f[1]) / 2; }
+        var p = Math.min(hi, Math.max(lo, desired));
+        var cost = Math.abs(p - desired) + Math.abs(p - prevX) * 0.6;
+        if (cost < bestCost) { bestCost = cost; best = p; }
+      }
+      return best;
+    }
+
+    /* Intersection de deux listes d'intervalles triés. */
+    function intersectIntervals(a, b) {
+      var res = [], i = 0, j = 0;
+      while (i < a.length && j < b.length) {
+        var lo = Math.max(a[i][0], b[j][0]);
+        var hi = Math.min(a[i][1], b[j][1]);
+        if (hi - lo > 16) res.push([lo, hi]);
+        if (a[i][1] < b[j][1]) i++; else j++;
+      }
+      return res;
+    }
+
+    /* Couloirs libres sur TOUTE la hauteur d'une bande de contenu (intersection
+       des espaces libres échantillonnés) → une colonne verticale sûre. */
+    function channelsOverBand(obstacles, y1, y2, W) {
+      var chans = [[W * 0.02, W * 0.98]];
+      for (var s = 0; s <= 6; s++) {
+        chans = intersectIntervals(chans, freeAtY(obstacles, y1 + (y2 - y1) * s / 6, W));
+        if (!chans.length) break;
+      }
+      return chans;
+    }
+
+    /* Points de passage : on regroupe les obstacles en bandes de contenu ; dans
+       chaque bande la ligne tient une colonne verticale libre (centre entre les
+       cartes, côté des titres) ; les déplacements horizontaux se font dans les
+       espaces vides ENTRE les bandes — donc jamais à travers du texte. */
+    function buildWaypoints(obstacles, W, H) {
+      var iv = obstacles.map(function (o) { return [Math.max(0, o.y1), Math.min(H, o.y2)]; })
+        .filter(function (a) { return a[1] > a[0]; })
+        .sort(function (a, b) { return a[0] - b[0]; });
+      var bands = [];
+      iv.forEach(function (a) {
+        if (bands.length && a[0] <= bands[bands.length - 1][1] + 6) {
+          bands[bands.length - 1][1] = Math.max(bands[bands.length - 1][1], a[1]);
+        } else bands.push([a[0], a[1]]);
+      });
+      var pts = [{ x: W * 0.5, y: 0 }], prevX = W * 0.5;
+      bands.forEach(function (b) {
+        var chans = channelsOverBand(obstacles, b[0], b[1], W);
+        if (!chans.length) chans = freeAtY(obstacles, (b[0] + b[1]) / 2, W);
+        var x = pickX(chans, W * 0.5, prevX);
+        pts.push({ x: x, y: b[0] });
+        pts.push({ x: x, y: b[1] });
+        prevX = x;
+      });
+      pts.push({ x: prevX, y: H });
+      return pts;
+    }
+
+    /* Spline lisse (Catmull-Rom → Bézier cubique) : courbes continues, aucun
+       angle droit nulle part. */
+    function routeToD(pts) {
+      if (pts.length < 2) return '';
+      var d = 'M ' + pts[0].x.toFixed(1) + ' ' + pts[0].y.toFixed(1) + ' ';
+      for (var i = 0; i < pts.length - 1; i++) {
+        var p0 = pts[i - 1] || pts[i];
+        var p1 = pts[i];
+        var p2 = pts[i + 1];
+        var p3 = pts[i + 2] || pts[i + 1];
+        var c1x = p1.x + (p2.x - p0.x) / 6;
+        var c1y = p1.y + (p2.y - p0.y) / 6;
+        var c2x = p2.x - (p3.x - p1.x) / 6;
+        var c2y = p2.y - (p3.y - p1.y) / 6;
+        d += 'C ' + c1x.toFixed(1) + ' ' + c1y.toFixed(1) + ' ' + c2x.toFixed(1) + ' ' + c2y.toFixed(1) + ' ' + p2.x.toFixed(1) + ' ' + p2.y.toFixed(1) + ' ';
+      }
+      return d;
+    }
+
+    /* Échantillonne le tracé pour retrouver la longueur correspondant à une
+       position Y donnée — indispensable car la route serpente horizontalement,
+       donc "longueur parcourue" ≠ "avancement vertical". Sans ça le dessin
+       prend du retard sur le scroll (déjà tracé plus haut que ce qui est visible). */
+    function buildYTable(path, len) {
+      var table = [], steps = 150;
+      for (var i = 0; i <= steps; i++) {
+        var l = (len * i) / steps;
+        table.push({ len: l, y: path.getPointAtLength(l).y });
+      }
+      return table;
+    }
+    function lengthForY(table, targetY) {
+      if (targetY <= table[0].y) return 0;
+      var last = table[table.length - 1];
+      if (targetY >= last.y) return last.len;
+      for (var i = 1; i < table.length; i++) {
+        if (table[i].y >= targetY) {
+          var a = table[i - 1], b = table[i];
+          var ratio = (b.y === a.y) ? 0 : (targetY - a.y) / (b.y - a.y);
+          return a.len + (b.len - a.len) * ratio;
+        }
+      }
+      return last.len;
+    }
+
+    var totalH = 1, wrapTopDoc = 0, lastW = 0, lastH = 0;
+
+    function buildPath(force) {
+      var W = window.innerWidth;
+      if (W < 100) {
+        /* Viewport pas encore prêt (largeur nulle) : on réessaie plutôt que
+           de générer un tracé dégénéré (tout à x=0, donc des angles droits). */
+        setTimeout(buildPath, 200);
+        return;
+      }
+      var top = firstSec.getBoundingClientRect().top + window.scrollY;
+      var bottom = lastSec.getBoundingClientRect().bottom + window.scrollY;
+      var H = Math.max(1, bottom - top);
+      /* Évite les reconstructions redondantes (coûteuses → jank au chargement) :
+         on ne régénère que si la largeur ou la hauteur a réellement changé. */
+      if (!force && W === lastW && Math.abs(H - lastH) < 4) return;
+      lastW = W; lastH = H;
+      totalH = H;
+      wrapTopDoc = top;
+      wrap.style.top = top + 'px';
+      wrap.style.height = H + 'px';
+      svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+
+      /* Points de passage placés dans les vides entre les textes. */
+      var obstacles = collectObstacles(top, H);
+      var routeA = buildWaypoints(obstacles, W, H);
+      /* Trait jumeau légèrement décalé : ils se chevauchent, la brillance
+         passe de l'un à l'autre au fil du scroll. */
+      var routeB = routeA.map(function (pt) {
+        return { x: pt.x + 14, y: pt.y };
+      });
+
+      pathA.setAttribute('d', routeToD(routeA));
+      pathB.setAttribute('d', routeToD(routeB));
+      lengthA = pathA.getTotalLength();
+      lengthB = pathB.getTotalLength();
+      pathA.style.strokeDasharray = lengthA;
+      pathB.style.strokeDasharray = lengthB;
+      tableA = buildYTable(pathA, lengthA);
+      tableB = buildYTable(pathB, lengthB);
+      applyScroll();
+    }
+
+    /* Le dessin suit le VIEWPORT : la pointe reste à ~55% de la hauteur visible,
+       donc la ligne se dessine là où tu regardes et « suit » le scroll dès la
+       section problème (au lieu de dessiner tout en haut, hors écran). */
+    var BIAS = 0.55;
+    function applyScroll() {
+      var targetDocY = window.scrollY + window.innerHeight * BIAS;
+      var drawnY = Math.max(0, Math.min(totalH, targetDocY - wrapTopDoc));
+      /* Complète le tracé dès que le bas de la dernière section est visible. */
+      if (window.scrollY + window.innerHeight >= wrapTopDoc + totalH - 4) drawnY = totalH;
+      pathA.style.strokeDashoffset = lengthA - lengthForY(tableA, drawnY);
+      pathB.style.strokeDashoffset = lengthB - lengthForY(tableB, drawnY);
+      /* La brillance oscille et bascule d'un trait à l'autre au fil du scroll. */
+      var wave = Math.sin((drawnY / totalH) * Math.PI * 6);
+      pathA.style.opacity = 0.35 + 0.55 * (0.5 + 0.5 * wave);
+      pathB.style.opacity = 0.35 + 0.55 * (0.5 - 0.5 * wave);
+    }
+
+    /* Calcul lourd (mesure du texte + géométrie SVG) repoussé après la
+       première peinture pour ne pas bloquer le rendu initial de la page. */
+    var idle = window.requestIdleCallback || function (fn) { setTimeout(fn, 60); };
+    idle(function () {
+      buildPath(true);
+      st = ScrollTrigger.create({
+        trigger: firstSec,
+        endTrigger: lastSec,
+        start: 'top bottom',
+        end: 'bottom top',
+        onUpdate: applyScroll,
+        onRefresh: applyScroll
+      });
+    });
+
+    /* Le carrousel des outils (et les polices) peuvent changer la hauteur de
+       page après le premier calcul : un seul recalcul de secours, sans jank
+       redondant (buildPath ignore les rebuilds inutiles). */
+    window.addEventListener('load', function () { idle(function () { buildPath(); }); });
+
+    var rz = null;
+    window.addEventListener('resize', function () {
+      clearTimeout(rz);
+      rz = setTimeout(function () { buildPath(true); }, 180);
+    }, { passive: true });
+
+    return true;
+  }
+
+  (function poll(n) {
+    if (build()) return;
+    if (n > 400) return;
+    setTimeout(function () { poll(n + 1); }, 30);
+  })(0);
 })();
 </script>
 
