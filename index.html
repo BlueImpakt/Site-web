@@ -291,7 +291,7 @@
     /* État initial masqué en CSS (pas en JS) pour éviter le flash au chargement :
        ces éléments sont visibles par défaut tant que GSAP n'a pas fini de charger,
        puis initHeroEntrance() les anime depuis cet état. */
-    .js-anim .hero-badge, .js-anim .hero-left h1, .js-anim .tool-pill { opacity: 0; }
+    .js-anim .hero-badge, .js-anim .hero-left h1, .js-anim .tool-pill, .js-anim .hero-sub-group { opacity: 0; }
 
     .hero-badge {
       display: inline-flex;
@@ -1929,7 +1929,7 @@ Cal("ui",{"hideEventTypeDetails":false,"layout":"month_view"});
 })();
 </script>
 
-<!-- ─── Hero : entrée du badge, du titre et de la barre d'outils ─── -->
+<!-- ─── Hero : entrée du badge, du titre, du texte et de la barre d'outils ─── -->
 <script>
 (function initHeroEntrance() {
   if (!window.gsap) { setTimeout(initHeroEntrance, 30); return; }
@@ -1937,6 +1937,7 @@ Cal("ui",{"hideEventTypeDetails":false,"layout":"month_view"});
 
   const badge = document.querySelector(".hero-badge");
   const h1 = document.querySelector(".hero-left h1");
+  const subGroup = document.querySelector(".hero-sub-group");
   const pills = document.querySelectorAll(".tool-pill");
   if (!badge || !h1) return;
 
@@ -1945,12 +1946,14 @@ Cal("ui",{"hideEventTypeDetails":false,"layout":"month_view"});
   var REST = -75.6;
   gsap.set(badge, { opacity: 0, y: REST + 20 });
   gsap.set(h1, { opacity: 0, y: REST + 28 });
+  if (subGroup) gsap.set(subGroup, { opacity: 0, y: 20 });
   gsap.set(pills, { opacity: 0, y: 16 });
 
-  gsap.timeline({ delay: 0.15 })
+  var tl = gsap.timeline({ delay: 0.15 })
     .to(badge, { opacity: 1, y: REST, duration: 0.7, ease: "power2.out" })
-    .to(h1, { opacity: 1, y: REST, duration: 0.8, ease: "power2.out" }, "-=0.45")
-    .to(pills, { opacity: 1, y: 0, duration: 0.6, stagger: 0.06, ease: "power2.out" }, "-=0.35");
+    .to(h1, { opacity: 1, y: REST, duration: 0.8, ease: "power2.out" }, "-=0.45");
+  if (subGroup) tl.to(subGroup, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, "-=0.5");
+  tl.to(pills, { opacity: 1, y: 0, duration: 0.6, stagger: 0.06, ease: "power2.out" }, "-=0.35");
 })();
 </script>
 
