@@ -2211,9 +2211,10 @@ Cal("ui",{"hideEventTypeDetails":false,"layout":"month_view"});
     const outOrder = shuffle([...Array(batchSize).keys()]);
     const inDelay = new Array(batchSize).fill(0);
     const outDelay = new Array(batchSize).fill(0);
-    /* Le tout premier lot doit apparaître vite (sinon le cercle reste "vide"
-       plusieurs secondes à l'ouverture de la page) : stagger resserré une
-       seule fois, puis le rythme normal, plus posé, reprend pour la suite. */
+    /* Le tout premier lot attend 1s avant d'apparaître (laisse le cercle se
+       poser d'abord), puis ses mots arrivent avec un stagger resserré une
+       seule fois ; le rythme normal, plus posé, reprend pour la suite. */
+    const firstBatchDelay = isFirstBatch ? 1 : 0;
     const staggerMin = isFirstBatch ? CFG.labelInStaggerMin * 0.25 : CFG.labelInStaggerMin;
     const staggerMax = isFirstBatch ? CFG.labelInStaggerMax * 0.3 : CFG.labelInStaggerMax;
     isFirstBatch = false;
@@ -2224,8 +2225,8 @@ Cal("ui",{"hideEventTypeDetails":false,"layout":"month_view"});
 
     labels = chosen.map((c, i) => ({
       ...c,
-      inStart: nowSec + inDelay[i], inEnd: nowSec + inDelay[i] + CFG.labelInDur,
-      outStart: nowSec + outDelay[i], outEnd: nowSec + outDelay[i] + CFG.labelOutDur,
+      inStart: nowSec + firstBatchDelay + inDelay[i], inEnd: nowSec + firstBatchDelay + inDelay[i] + CFG.labelInDur,
+      outStart: nowSec + firstBatchDelay + outDelay[i], outEnd: nowSec + firstBatchDelay + outDelay[i] + CFG.labelOutDur,
     }));
     batchEndAt = Math.max(...labels.map(l => l.outEnd)) + CFG.labelBatchGap;
   }
