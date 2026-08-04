@@ -236,7 +236,12 @@
       gap: 5px;
       cursor: pointer;
       padding: 4px;
+      background: none;
+      border: none;
+      appearance: none;
+      -webkit-appearance: none;
     }
+    body.menu-open .hamburger { visibility: hidden; }
     .hamburger span {
       display: block;
       width: 22px; height: 2px;
@@ -1005,7 +1010,7 @@
        RESPONSIVE
     ───────────────────────────────────────── */
     @media (max-width: 960px) {
-      .nav-links { display: none; }
+      .nav-links, .nav-btn { display: none; }
       .hamburger { display: flex; }
       .prob-grid, .offers-grid, .about-in, .footer-in { grid-template-columns: 1fr; }
       .pricing-grid { grid-template-columns: 1fr; max-width: 480px; }
@@ -1013,8 +1018,10 @@
       .steps-wrap::before, .steps-wrap::after { display: none; }
       .tools-grid { grid-template-columns: 1fr 1fr; }
       .hero-split { flex-direction: column; text-align: center; }
+      .hero-left, .hero-right { transform: none; }
       .hero-sub-group { transform: none; }
       .hero-right .hero-sub { max-width: none; margin: 0 auto; }
+      .tools-row { transform: none; }
       section { padding: clamp(24px, 3.5vh, 48px) 0; }
       .cta-box { padding: clamp(24px, 4vh, 48px) 24px; }
       .footer-in { gap: 28px; }
@@ -1033,7 +1040,9 @@
       .tools-grid { grid-template-columns: 1fr; }
       .cta-btns { flex-direction: column; }
       .cta-btns .btn { width: 100%; }
-      .offer-card, .price-card { padding: 36px 28px; }
+      .offer-card, .price-card { padding: 28px 20px; }
+      .price-tier { padding: 14px 12px; }
+      .price-tier-amount { font-size: 21px; }
     }
 
     /* Mobile menu open */
@@ -1792,11 +1801,13 @@
     menu.classList.add('open');
     ham.setAttribute('aria-expanded', 'true');
     document.body.style.overflow = 'hidden';
+    document.body.classList.add('menu-open');
   }
   function closeMenu() {
     menu.classList.remove('open');
     ham.setAttribute('aria-expanded', 'false');
     document.body.style.overflow = '';
+    document.body.classList.remove('menu-open');
   }
   ham.addEventListener('click', openMenu);
   close.addEventListener('click', closeMenu);
