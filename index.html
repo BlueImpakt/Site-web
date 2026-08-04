@@ -13,6 +13,18 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300&family=Fragment+Mono&display=swap" rel="stylesheet">
 
+  <script>
+    /* Masque le badge/h1/pills hero via CSS AVANT le premier paint (évite le flash
+       "visible puis caché" le temps que GSAP charge). Filet de sécurité : si GSAP
+       ne charge jamais, on retire la classe pour ne pas cacher le contenu indéfiniment. */
+    (function () {
+      if (!window.matchMedia || !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        document.documentElement.classList.add("js-anim");
+        setTimeout(function () { document.documentElement.classList.remove("js-anim"); }, 4000);
+      }
+    })();
+  </script>
+
   <style>
     /* ─────────────────────────────────────────
        RESET & TOKENS
@@ -275,6 +287,11 @@
     .hero-sub-group { text-align: justify; color: #fff; transform: translate(2cm, 0cm); }
     .hero-sub-group .hero-sub + .hero-sub { margin-top: 14px; }
     .tools-row { transform: translateY(1.8cm); }
+
+    /* État initial masqué en CSS (pas en JS) pour éviter le flash au chargement :
+       ces éléments sont visibles par défaut tant que GSAP n'a pas fini de charger,
+       puis initHeroEntrance() les anime depuis cet état. */
+    .js-anim .hero-badge, .js-anim .hero-left h1, .js-anim .tool-pill { opacity: 0; }
 
     .hero-badge {
       display: inline-flex;
