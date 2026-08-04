@@ -176,7 +176,7 @@
       transition: all .3s ease;
     }
     #nav.stuck {
-      background: rgba(7,17,29,.88);
+      background: rgba(7,17,29,.55);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
@@ -646,8 +646,16 @@
       color: var(--text-d);
       font-style: italic;
       text-align: center;
-      margin: -18px 0 24px;
-      transform: translateY(0.5cm);
+      margin: 2px 0 24px;
+    }
+    .price-from {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--text-d);
+      text-align: center;
+      margin: calc(-1 * clamp(16px, 2.5vh, 28px)) 0 2px;
     }
     .price-card:not(.featured) .price-tier-amount.grad-text {
       background: var(--green-l);
@@ -1203,11 +1211,11 @@
         </div>
         <h3>Pour les associations</h3>
         <ul class="prob-list">
-          <li><div class="x-dot" aria-hidden="true">×</div>Les dossiers de financement prennent des semaines entières</li>
-          <li><div class="x-dot" aria-hidden="true">×</div>La gestion de projets est morcelée entre dix outils différents</li>
-          <li><div class="x-dot" aria-hidden="true">×</div>Le reporting mobilise vos bénévoles sur des tâches ingrates</li>
-          <li><div class="x-dot" aria-hidden="true">×</div>Les partenariats prennent du temps à identifier et activer</li>
-          <li><div class="x-dot" aria-hidden="true">×</div>La stratégie se perd dans l'urgence du quotidien</li>
+          <li><div class="x-dot" aria-hidden="true">×</div>Des semaines perdues sur les dossiers de subvention</li>
+          <li><div class="x-dot" aria-hidden="true">×</div>Des informations éparpillées entre trop d'outils</li>
+          <li><div class="x-dot" aria-hidden="true">×</div>Des bénévoles occupés à de la saisie administrative</li>
+          <li><div class="x-dot" aria-hidden="true">×</div>La recherche de partenaires manque de méthode</li>
+          <li><div class="x-dot" aria-hidden="true">×</div>La gestion des urgences prend le dessus sur la stratégie</li>
         </ul>
       </div>
 
@@ -1218,11 +1226,11 @@
         </div>
         <h3>Pour les entreprises à impact</h3>
         <ul class="prob-list">
-          <li><div class="x-dot" aria-hidden="true">×</div>Vos processus manuels freinent votre croissance</li>
-          <li><div class="x-dot" aria-hidden="true">×</div>L'IA existe mais vous ne savez pas par où commencer</li>
-          <li><div class="x-dot" aria-hidden="true">×</div>Chaque automatisation semble nécessiter un développeur</li>
-          <li><div class="x-dot" aria-hidden="true">×</div>Vos équipes perdent des heures sur des tâches répétitives</li>
-          <li><div class="x-dot" aria-hidden="true">×</div>Les outils no-code vous semblent complexes à maîtriser</li>
+          <li><div class="x-dot" aria-hidden="true">×</div>Des tâches manuelles répétées tous les jours</li>
+          <li><div class="x-dot" aria-hidden="true">×</div>Volonté d'intégrer l'IA, sans savoir par où commencer</li>
+          <li><div class="x-dot" aria-hidden="true">×</div>Dépendance technique pour la moindre automatisation</li>
+          <li><div class="x-dot" aria-hidden="true">×</div>Des outils no-code sous-utilisés faute de temps</li>
+          <li><div class="x-dot" aria-hidden="true">×</div>Un fonctionnement interne qui freine l'activité</li>
         </ul>
       </div>
     </div>
@@ -1244,38 +1252,38 @@
       <!-- ASSO -->
       <div class="offer-card g fu">
         <span class="tag tag-green">Associations environnementales</span>
-        <h3>Du conseil à l'action</h3>
+        <h3>Structurer et agir sur le terrain</h3>
         <p class="offer-desc">
-          Stratégie, financement, gestion de projets, IA. Un accompagnement complet pour les organisations qui veulent avoir plus d'impact avec moins de friction.
+          Un accompagnement sur mesure pour structurer votre activité, sécuriser vos financements et libérer du temps sur le terrain.
         </p>
         <ul class="svc-list">
           <li>
             <span class="chk chk-g"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 6 5 9 10 3"/></svg></span>
-            Conseil stratégique &amp; plan d'impact
+            Plan stratégique et priorisation des actions
           </li>
           <li>
             <span class="chk chk-g"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 6 5 9 10 3"/></svg></span>
-            Montage de dossiers de financement
+            Optimisation du montage des dossiers de financement
           </li>
           <li>
             <span class="chk chk-g"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 6 5 9 10 3"/></svg></span>
-            Gestion de projets structurée avec Notion
+            Gestion de projets collaborative avec Notion
           </li>
           <li>
             <span class="chk chk-g"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 6 5 9 10 3"/></svg></span>
-            Automatisations IA : rapports & suivi terrain
+            Rapports et suivi terrain automatisés
           </li>
           <li>
             <span class="chk chk-g"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 6 5 9 10 3"/></svg></span>
-            Identification et développement de partenariats
+            Structuration admin et recherche de partenariats
           </li>
           <li>
             <span class="chk chk-g"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 6 5 9 10 3"/></svg></span>
-            Développement web et outils sur mesure
+            Accompagnement jusqu'à l'autonomie complète
           </li>
         </ul>
-        <a href="https://cal.eu/melvin-perrottet/30min" data-cal-link="melvin-perrottet/30min" data-cal-origin="https://cal.eu" class="btn btn-ghost btn-wide" style="cursor:pointer;">
-          Discutons de votre projet
+        <a href="https://cal.eu/melvin-perrottet/30min" data-cal-link="melvin-perrottet/30min" data-cal-origin="https://cal.eu" class="btn btn-primary btn-wide" style="cursor:pointer;">
+          Discuter de votre projet
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
       </div>
@@ -1283,37 +1291,37 @@
       <!-- Entreprises -->
       <div class="offer-card b fu">
         <span class="tag tag-blue">Entreprises</span>
-        <h3>L'IA qui travaille à votre place</h3>
+        <h3>L'IA au service de vos équipes</h3>
         <p class="offer-desc">
-          Des automatisations concrètes, des agents IA sur mesure, du développement web et SaaS, des outils no-code déployés et adoptés par vos équipes, au service d'une croissance qui a du sens.
+          Des automatisations concrètes et des agents IA intégrés à vos outils pour simplifier le quotidien opérationnel de vos équipes.
         </p>
         <ul class="svc-list">
           <li>
             <span class="chk chk-b"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 6 5 9 10 3"/></svg></span>
-            Audit de vos processus et identification des gains rapides
+            Audit des processus et identification des gains rapides
           </li>
           <li>
             <span class="chk chk-b"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 6 5 9 10 3"/></svg></span>
-            Automatisations métier avec Make et N8N
+            Automatisations métier avec Make et n8n
           </li>
           <li>
             <span class="chk chk-b"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 6 5 9 10 3"/></svg></span>
-            Agents IA sur mesure (CRM, support, reporting)
+            Déploiement d'agents IA (ventes, admin, reporting)
           </li>
           <li>
             <span class="chk chk-b"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 6 5 9 10 3"/></svg></span>
-            Workspaces Notion pour vos équipes
+            Workspaces et workflows sur-mesure pour vos équipes
           </li>
           <li>
             <span class="chk chk-b"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 6 5 9 10 3"/></svg></span>
-            Formation et montée en compétences
+            Formation interne et montée en compétences
           </li>
           <li>
             <span class="chk chk-b"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 6 5 9 10 3"/></svg></span>
-            Accompagnement jusqu'à l'autonomie complète
+            Support technique et suivi opérationnel continu
           </li>
         </ul>
-        <a href="https://cal.eu/melvin-perrottet/30min" data-cal-link="melvin-perrottet/30min" data-cal-origin="https://cal.eu" class="btn btn-primary btn-wide" style="cursor:pointer;">
+        <a href="https://cal.eu/melvin-perrottet/30min" data-cal-link="melvin-perrottet/30min" data-cal-origin="https://cal.eu" class="btn btn-ghost btn-wide" style="cursor:pointer;">
           Lancer mon projet
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
@@ -1454,6 +1462,7 @@
             <div class="price-tier-amount grad-text" style="-webkit-text-fill-color:transparent;">500 €<span class="price-tier-unit" style="-webkit-text-fill-color:var(--text-m);">/mois</span></div>
           </div>
         </div>
+        <p class="price-from">À partir de</p>
         <p class="price-note">Ajusté selon votre situation et vos besoins.</p>
         <h3 class="price-name">Impact &amp; Stratégie</h3>
         <p class="price-desc">Pour les associations qui veulent structurer leur impact et gagner en efficacité opérationnelle rapidement.</p>
@@ -1497,6 +1506,7 @@
             <div class="price-tier-amount grad-text" style="-webkit-text-fill-color:transparent;">1 000 €<span class="price-tier-unit" style="-webkit-text-fill-color:var(--text-m);">/mois</span></div>
           </div>
         </div>
+        <p class="price-from">À partir de</p>
         <p class="price-note">Ajusté selon votre situation et vos besoins.</p>
         <h3 class="price-name">Automatisation &amp; Croissance</h3>
         <p class="price-desc">Pour les entreprises à impact prêtes à transformer leurs processus avec l'IA et le no-code dès le premier mois.</p>
@@ -1551,7 +1561,7 @@
         <div class="about-name">Melvin Perrottet</div>
         <div class="about-role">Fondateur · Blue Impakt</div>
         <p class="about-quote">
-          Diplômé d'un master en Économie Sociale et Collaborative, j'ai été responsable des partenariats & coordinateur de projets environnementaux dans le monde associatif, avant de me former en profondeur aux outils digitaux d'aujourd'hui. C'est cette triple casquette (à la croisée des sciences sociales, environnementales et numériques) qui m'a poussé à créer Blue Impakt : pour que les associations environnementales et les entreprises responsables maîtrisent les mêmes outils que les géants de la tech. Des outils puissants, accessibles, et au service d'un impact réel.
+          Diplômé d'un master en Économie Sociale et Collaborative, j'ai été responsable des partenariats & coordinateur de projets environnementaux dans le monde associatif, avant de me former en profondeur aux outils digitaux d'aujourd'hui. C'est cette triple casquette (à la croisée des sciences économiques, environnementales et numériques) qui m'a poussé à créer Blue Impakt : pour que les associations environnementales et les entreprises responsables maîtrisent les mêmes outils que les géants de la tech. Des outils puissants, accessibles, et au service d'un impact réel.
         </p>
         <div class="stats">
           <div class="stat">
@@ -1739,7 +1749,6 @@
     </div>
     <div class="footer-btm">
       <span>© 2026 Blue Impakt. Tous droits réservés</span>
-      <a href="mailto:melvin.perrottet@blue-impakt.org" style="color:var(--text-m);transition:color .2s;">melvin.perrottet@blue-impakt.org</a>
     </div>
   </div>
 </footer>
@@ -2001,7 +2010,7 @@ Cal("ui",{"hideEventTypeDetails":false,"layout":"month_view"});
   let w = 1, h = 1, cx = 0, cy = 0, R = 1, dpr = 1;
   let raf = 0, lastTs = performance.now(), rotation = 0;
   let isInViewport = true, isPageVisible = document.visibilityState !== "hidden";
-  let io = null, nodes = [], labels = [], batchEndAt = 0;
+  let io = null, nodes = [], labels = [], batchEndAt = 0, isFirstBatch = true;
   let prevBatchTexts = new Set();
   let resizeRaf = 0, lastW = 0, lastH = 0, lastIsMobile = null;
 
@@ -2182,8 +2191,14 @@ Cal("ui",{"hideEventTypeDetails":false,"layout":"month_view"});
     const outOrder = shuffle([...Array(batchSize).keys()]);
     const inDelay = new Array(batchSize).fill(0);
     const outDelay = new Array(batchSize).fill(0);
+    /* Le tout premier lot doit apparaître vite (sinon le cercle reste "vide"
+       plusieurs secondes à l'ouverture de la page) : stagger resserré une
+       seule fois, puis le rythme normal, plus posé, reprend pour la suite. */
+    const staggerMin = isFirstBatch ? CFG.labelInStaggerMin * 0.25 : CFG.labelInStaggerMin;
+    const staggerMax = isFirstBatch ? CFG.labelInStaggerMax * 0.3 : CFG.labelInStaggerMax;
+    isFirstBatch = false;
     let accIn = 0;
-    for (const idx of inOrder) { inDelay[idx] = accIn; accIn += rand(CFG.labelInStaggerMin, CFG.labelInStaggerMax); }
+    for (const idx of inOrder) { inDelay[idx] = accIn; accIn += rand(staggerMin, staggerMax); }
     let accOut = accIn + rand(CFG.labelShowHoldMin, CFG.labelShowHoldMax);
     for (const idx of outOrder) { outDelay[idx] = accOut; accOut += rand(CFG.labelOutStaggerMin, CFG.labelOutStaggerMax); }
 
@@ -2305,9 +2320,23 @@ Cal("ui",{"hideEventTypeDetails":false,"layout":"month_view"});
     raf = (isInViewport && isPageVisible) ? requestAnimationFrame(draw) : 0;
   }
 
+  let firstStart = true;
   function start() {
     stopLoop(); resize(); buildNodes(); labels = []; batchEndAt = 0;
-    lastIsMobile = isMobile(); lastW = w; lastH = h; syncLoopState();
+    lastIsMobile = isMobile(); lastW = w; lastH = h;
+    if (firstStart) {
+      /* Au tout premier démarrage, `document.visibilityState` peut encore
+         valoir "hidden" une fraction de seconde (page pas encore présentée),
+         ce qui retardait le lancement de la boucle — et donc l'apparition
+         des mots — jusqu'à ce qu'un `visibilitychange` tardif la corrige.
+         On démarre immédiatement ; le vrai passage en arrière-plan sera de
+         toute façon géré par l'écouteur visibilitychange ensuite. */
+      firstStart = false;
+      isPageVisible = true;
+      startLoop();
+    } else {
+      syncLoopState();
+    }
   }
 
   function resizeSoft() {
@@ -2372,6 +2401,7 @@ Cal("ui",{"hideEventTypeDetails":false,"layout":"month_view"});
   window.__biPixelInit = true;
 
   var COLS = 25, ROWS = 8, REVEAL_RATIO = 0.5;
+  var EXTRA_ROWS = 2; // décale le début de la transition de 2 rangées vers le bas (sans retirer de rangées) et agrandit d'autant le bas de la section précédente
   var built = false, instances = [];
 
   function seededRandom(seed) {
@@ -2415,7 +2445,7 @@ Cal("ui",{"hideEventTypeDetails":false,"layout":"month_view"});
     state.solid = state.solid ? pb >= 0.985 : pb >= 0.997;
   }
 
-  function sizeGrid(grid, wrap, from) {
+  function sizeGrid(grid, wrap, from, triggerEl) {
     var cw = wrap.clientWidth || (wrap.parentElement && wrap.parentElement.clientWidth) || window.innerWidth;
     cw = Math.round(cw);
     var draw = Math.max(18, Math.ceil(cw / COLS));
@@ -2433,11 +2463,31 @@ Cal("ui",{"hideEventTypeDetails":false,"layout":"month_view"});
     var cubes = wrap.parentElement;
     if (cubes && cubes.classList.contains('transition_cubes')) {
       var sec = cubes.parentElement;
+      var fromColor = wrap.dataset.from || '#07111D';
+      /* Agrandit le bas de la section précédente de EXTRA_ROWS rangées via un
+         spacer inséré entre les deux sections (même couleur que la section
+         précédente), puis décale d'autant le point de départ de la transition :
+         elle démarre plus bas, dans la zone ajoutée, sans qu'aucune rangée de
+         pixels ne soit retirée. On évite de toucher directement à la hauteur de
+         la section précédente (ex. le hero, qui est pinné par ScrollTrigger et
+         verrait sa hauteur réinitialisée). */
+      if (sec && triggerEl) {
+        var buffer = cubes.__pxBuffer;
+        if (!buffer || !buffer.isConnected) {
+          buffer = document.createElement('div');
+          buffer.className = 'px-trigger-buffer';
+          buffer.setAttribute('aria-hidden', 'true');
+          buffer.style.cssText = 'display:block;width:100%;overflow:hidden;';
+          sec.parentNode.insertBefore(buffer, sec);
+          cubes.__pxBuffer = buffer;
+        }
+        buffer.style.height = (EXTRA_ROWS * draw) + 'px';
+        buffer.style.background = fromColor;
+      }
       /* 4 rangées dans la section cible, 2 rangées dans la section précédente.
          On soustrait le padding-top de la section pour que la grille parte du bord extérieur. */
       var secPT = sec ? (parseFloat(getComputedStyle(sec).paddingTop) || 0) : 0;
-      cubes.style.marginTop = Math.max(0, 4 * draw - secPT) + 'px';
-      var fromColor = wrap.dataset.from || '#07111D';
+      cubes.style.marginTop = Math.max(0, (4 + EXTRA_ROWS) * draw - secPT) + 'px';
       var split = 0;
       if (sec) {
         if (!sec.dataset.origBgImage)
@@ -2482,7 +2532,7 @@ Cal("ui",{"hideEventTypeDetails":false,"layout":"month_view"});
       }
     }
 
-    sizeGrid(grid, wrap, from);
+    sizeGrid(grid, wrap, from, triggerEl);
 
     var revealOrder = shuffle(active, seededRandom(200 + idx));
     var blackOrder = shuffle(active, seededRandom(300 + idx));
@@ -2514,7 +2564,7 @@ Cal("ui",{"hideEventTypeDetails":false,"layout":"month_view"});
     });
 
     setProgress(st.progress);
-    return { wrap, grid, from, st, resize: function () { sizeGrid(grid, wrap, from); }, sync: function () { setProgress(st.progress); } };
+    return { wrap, grid, from, st, resize: function () { sizeGrid(grid, wrap, from, triggerEl); }, sync: function () { setProgress(st.progress); } };
   }
 
   function build() {
@@ -2638,6 +2688,7 @@ Cal("ui",{"hideEventTypeDetails":false,"layout":"month_view"});
   var cards = Array.prototype.slice.call(grid.querySelectorAll('.tool-card'));
   var OFFSETS = [0, -70, 40, 100, -50, 0];
   var currentX = 0, targetX = 0, rafId = 0, maxXVal = 0;
+  var EXTRA_LOCK = 500; // px de scroll verrouillé en plus une fois la dernière carte atteinte, pour lui laisser le temps d'apparaître complètement
 
   /* Seule la grille se fige (sticky), pas le titre : le titre défile
      normalement, puis la grille se bloque en haut du viewport pendant le
@@ -2654,8 +2705,9 @@ Cal("ui",{"hideEventTypeDetails":false,"layout":"month_view"});
 
   function calcMax() {
     var left = grid.getBoundingClientRect().left + currentX;
-    maxXVal = Math.max(0, left + grid.scrollWidth - sec.offsetWidth);
-    spacer.style.height = (stickyBox.offsetHeight + maxXVal) + 'px';
+    var visibleRight = stickyBox.getBoundingClientRect().right;
+    maxXVal = Math.max(0, left + grid.scrollWidth - visibleRight);
+    spacer.style.height = (stickyBox.offsetHeight + maxXVal + EXTRA_LOCK) + 'px';
   }
 
   function onScroll() {
