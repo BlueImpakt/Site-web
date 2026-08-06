@@ -202,18 +202,14 @@
     .nav-logo {
       display: flex;
       align-items: center;
-      gap: 10px;
-      font-family: 'DM Serif Display', serif;
+      font-family: 'DM Sans', sans-serif;
       font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
       cursor: pointer;
     }
-    .logo-sq {
-      width: 36px; height: 36px;
-      border-radius: 10px;
-      background: var(--grad);
-      display: flex; align-items: center; justify-content: center;
-    }
-    .logo-sq svg { width: 18px; height: 18px; fill: #fff; }
+    .logo-blue { color: #FFFFFF; }
+    .logo-impakt { color: var(--blue-l); }
     .nav-links {
       display: flex;
       align-items: center;
@@ -964,7 +960,8 @@
     }
     #nav.is-light .nav-links a { color: #555; }
     #nav.is-light .nav-links a:hover { color: #151515; }
-    #nav.is-light .logo-sq { box-shadow: 0 2px 12px rgba(0,0,0,.12); }
+    #nav.is-light .logo-blue { color: #07111D; }
+    #nav.is-light .logo-impakt { color: var(--blue); }
 
     /* ─────────────────────────────────────────
        CTA SVG DIAGRAM
@@ -1105,14 +1102,7 @@
 <nav id="nav">
   <div class="container">
     <div class="nav-in">
-      <a href="#" class="nav-logo" aria-label="Blue Impakt, accueil">
-        <div class="logo-sq">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
-          </svg>
-        </div>
-        Blue Impakt
-      </a>
+      <a href="#" class="nav-logo" aria-label="Blue Impakt, accueil"><span class="logo-blue">Blue</span><span class="logo-impakt">Impakt</span></a>
       <ul class="nav-links" role="navigation" aria-label="Navigation principale">
         <li><a href="#accompagnements" data-line-reveal="">Accompagnements</a></li>
         <li><a href="#methode" data-line-reveal="">Méthode</a></li>
@@ -1746,12 +1736,7 @@
   <div class="container">
     <div class="footer-in">
       <div class="footer-brand">
-        <a href="#" class="nav-logo">
-          <div class="logo-sq">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" fill="#fff"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-          </div>
-          Blue Impakt
-        </a>
+        <a href="#" class="nav-logo"><span class="logo-blue">Blue</span><span class="logo-impakt">Impakt</span></a>
         <p>L'IA au service de l'environnement et de l'humain. Accompagnement stratégique, automatisations et agents IA pour associations et entreprises à impact.</p>
       </div>
       <div class="footer-col">
